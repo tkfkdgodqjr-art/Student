@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SBS아카데미 안산 — 수강생 안내</title>
+<title>SBS아카데미 안산 — 수강생 안내 기업섹션 적용완료</title>
 <meta name="description" content="SBS아카데미 안산 수강생을 위한 수업 정보 안내 페이지">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -453,6 +453,20 @@
   }
   .notice-box strong { font-weight: 600; }
 
+
+
+  /* 자습 가능 칸 전체 핑크색 적용 */
+  #page-selfstudy td:has(> span[style*="#FBEAF0"]) {
+    background: #FBEAF0 !important;
+    color: #72243E !important;
+    font-weight: 600;
+  }
+  #page-selfstudy td:has(> span[style*="#FBEAF0"]) span {
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
   /* ── EXAM SCHEDULE ── */
   .exam-list { display: flex; flex-direction: column; gap: 10px; }
   .exam-item {
@@ -523,6 +537,17 @@
     flex-shrink: 0;
   }
   .company-ext svg { width: 13px; height: 13px; }
+  .group-label {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .5rem 0 .25rem;
+    border-bottom: 1px solid var(--border);
+    margin-top: .25rem;
+  }
 
   /* ── PARKING ── */
   .parking-grid {
@@ -599,6 +624,130 @@
     .nav-grid { padding: 0 1rem 3rem; }
     .header-inner { padding: 0 1rem; }
   }
+
+/* ── PARKING DETAIL SECTION ADDED ── */
+/* ── BENEFIT BANNER ── */
+  .benefit-banner {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .benefit-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: .75rem 1.125rem;
+    flex: 1;
+    min-width: 200px;
+  }
+  .benefit-chip-icon { font-size: 20px; flex-shrink: 0; }
+  .benefit-chip-text { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+  .benefit-chip-text strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* ── MAP CONTAINER ── */
+  .map-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+  .map-title-bar {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 1.25rem;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── PARKING GRID ── */
+  .parking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+  .parking-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.125rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .parking-card.recommend { border-color: var(--accent); }
+  .parking-card.recommend::before {
+    content: '⭐ 추천';
+    position: absolute; top: 10px; right: 12px;
+    font-size: 11px; font-weight: 600;
+    color: var(--accent); background: var(--accent-light);
+    padding: 2px 8px; border-radius: 99px;
+  }
+  .parking-card.warn { border-color: #e2c080; }
+  .parking-card.warn::before {
+    content: '⚠️ 저녁 비추천';
+    position: absolute; top: 10px; right: 12px;
+    font-size: 11px; font-weight: 600;
+    color: #a06010; background: var(--accent2-light);
+    padding: 2px 8px; border-radius: 99px;
+  }
+  .parking-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 8px;
+    font-size: 13px; font-weight: 700; color: #fff;
+    margin-right: 6px; flex-shrink: 0;
+  }
+  .parking-badge.a { background: #1a6fb5; }
+  .parking-badge.b { background: #c8893a; }
+  .parking-badge.c { background: #5a5850; }
+  .parking-badge.d { background: #2a5c3f; }
+
+  .parking-card-title {
+    font-size: 14px; font-weight: 600; color: var(--text-primary);
+    margin-bottom: .75rem; display: flex; align-items: center;
+  }
+  .parking-rows { display: flex; flex-direction: column; gap: 6px; }
+  .parking-row {
+    display: flex; justify-content: space-between;
+    font-size: 13px; padding: 5px 0;
+    border-bottom: 1px solid var(--border); gap: 8px;
+  }
+  .parking-row:last-child { border-bottom: none; }
+  .parking-label { color: var(--text-secondary); flex-shrink: 0; }
+  .parking-value { font-weight: 500; color: var(--text-primary); text-align: right; }
+  .parking-value.green { color: var(--accent); }
+  .parking-value.amber { color: var(--accent2); }
+
+  /* ── NOTICE BOX ── */
+  .notice-box {
+    background: var(--accent-light);
+    border: 1px solid #b5d9bf;
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    font-size: 13px; color: var(--accent); line-height: 1.65;
+  }
+  .notice-box strong { font-weight: 600; }
+
+
+  @media
+@media (max-width: 600px) {
+  .benefit-chip { min-width: 100%; }
+  .parking-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -1146,113 +1295,113 @@
     <tbody>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">09:00–11:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월·수·금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월·수·금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">11:00–13:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–목</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–목</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">13:00–14:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">14:00–15:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">화·목·금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">화·목·금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">15:00–15:30</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">화·목·금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">화·목·금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">15:30–16:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">화·목·금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">화·목·금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">16:00–17:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">17:00–18:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월·화</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월·화</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">18:00–18:30</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월·화</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월·화</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">18:30–19:00</td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
         <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
-        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#FBEAF0;color:#72243E;font-size:11px;font-weight:500;border-radius:5px;padding:3px 6px;line-height:1.35;white-space:nowrap">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
       </tr>
       <tr>
         <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">19:00–22:00</td>
@@ -1677,9 +1826,9 @@ render('전산세무회계');
 
     <div class="tab-pills">
       <button class="tab-pill active" onclick="setTab('co','all',this)">전체</button>
-      <button class="tab-pill" onclick="setTab('co','디자인',this)">디자인</button>
-      <button class="tab-pill" onclick="setTab('co','3D/CAD',this)">3D/CAD</button>
-      <button class="tab-pill" onclick="setTab('co','IT',this)">IT/회계</button>
+      <button class="tab-pill" onclick="setTab('co','인테리어',this)">인테리어</button>
+      <button class="tab-pill" onclick="setTab('co','웹/편집디자인',this)">웹/편집디자인</button>
+      <button class="tab-pill" onclick="setTab('co','모션/VFX',this)">모션·영상·VFX</button>
     </div>
 
     <div class="company-grid" id="company-grid"></div>
@@ -1689,11 +1838,12 @@ render('전산세무회계');
 <!-- ══════════════ PARKING ══════════════ -->
 <div id="page-parking" class="page-view">
   <div class="section" style="padding-top:2rem">
+
     <div class="section-header">
       <div>
         <p class="section-eyebrow">Parking</p>
         <h2 class="section-title">주차 안내</h2>
-        <p class="section-desc">학원 주차 이용 방법을 안내합니다.</p>
+        <p class="section-desc">SBS아카데미 안산점 주변 주차 이용 안내입니다.</p>
       </div>
       <button class="back-btn" onclick="showPage('home')">
         <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1701,30 +1851,214 @@ render('전산세무회계');
       </button>
     </div>
 
-    <div class="parking-grid">
-      <div class="parking-card">
-        <div class="parking-card-title">🅿️ 건물 지하 주차장</div>
-        <div class="parking-rows">
-          <div class="parking-row"><span class="parking-label">이용 가능 시간</span><span class="parking-value">09:00 – 22:00</span></div>
-          <div class="parking-row"><span class="parking-label">수강생 무료 시간</span><span class="parking-value">최대 2시간</span></div>
-          <div class="parking-row"><span class="parking-label">주차 검증</span><span class="parking-value">1층 안내데스크</span></div>
+    <!-- 기본 혜택 -->
+    <div class="benefit-banner">
+      <div class="benefit-chip">
+        <div class="benefit-chip-icon">🎁</div>
+        <div class="benefit-chip-text">
+          <strong>최초 1회 방문 시 무료</strong>
+          첫 방문 수강생은 주차 무료
         </div>
       </div>
+      <div class="benefit-chip">
+        <div class="benefit-chip-icon">⏱️</div>
+        <div class="benefit-chip-text">
+          <strong>2회 이후 30분 무료</strong>
+          2번째 방문부터 30분 무료 제공
+        </div>
+      </div>
+      <div class="benefit-chip">
+        <div class="benefit-chip-icon">💬</div>
+        <div class="benefit-chip-text">
+          <strong>인포데스크 문의</strong>
+          자세한 주차 안내는 인포데스크에서
+        </div>
+      </div>
+    </div>
+
+    <!-- 약도 SVG -->
+    <div class="map-wrap">
+      <div class="map-title-bar">
+        🗺️ 주차장 위치 약도
+      </div>
+      <svg width="100%" viewBox="0 0 680 380" role="img" style="display:block;">
+        <title>SBS아카데미 안산점 주차장 위치 약도</title>
+        <desc>학원 본원과 A, B, C, D 주차장의 위치를 나타낸 약도입니다.</desc>
+
+        <!-- 배경 -->
+        <rect x="0" y="0" width="680" height="380" fill="#f0efe9"/>
+
+        <!-- 블록 건물들 (회색 배경 건물) -->
+        <rect x="30"  y="30"  width="100" height="70"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+        <rect x="150" y="30"  width="80"  height="55"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+        <rect x="250" y="30"  width="90"  height="55"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+        <rect x="360" y="30"  width="80"  height="40"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+        <rect x="460" y="30"  width="90"  height="60"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+        <rect x="570" y="30"  width="80"  height="55"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+
+        <rect x="30"  y="280" width="80"  height="70"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+        <rect x="570" y="270" width="90"  height="80"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
+
+        <!-- 중앙역 + 지하철 아이콘 배경 -->
+        <rect x="200" y="295" width="130" height="60" rx="6" fill="#2a5c3f" opacity="0.12" stroke="#2a5c3f" stroke-width="0.8"/>
+        <text x="265" y="321" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="11" font-weight="700" fill="#2a5c3f">중앙역 (4호선)</text>
+        <text x="265" y="337" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#2a5c3f" opacity="0.8">🚇 Jungang Station</text>
+
+        <!-- 도로 -->
+        <!-- 세로 메인도로 (중앙) -->
+        <rect x="350" y="0"   width="56" height="380" fill="#e8e6de" stroke="none"/>
+        <!-- 가로 메인도로 (상단) -->
+        <rect x="0"   y="108" width="680" height="48"  fill="#e8e6de" stroke="none"/>
+        <!-- 가로 메인도로 (하단 - 중앙로) -->
+        <rect x="0"   y="258" width="680" height="40"  fill="#e8e6de" stroke="none"/>
+        <!-- 도로 중앙선 -->
+        <line x1="378" y1="0"   x2="378" y2="108" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
+        <line x1="378" y1="156" x2="378" y2="258" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
+        <line x1="378" y1="298" x2="378" y2="380" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
+        <line x1="0"   y1="132" x2="350" y2="132" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
+        <line x1="406" y1="132" x2="680" y2="132" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
+        <line x1="0"   y1="278" x2="350" y2="278" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
+        <line x1="406" y1="278" x2="680" y2="278" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
+
+        <!-- 도로 라벨 -->
+        <text x="183" y="126" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">중앙대로</text>
+        <text x="530" y="126" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">중앙대로</text>
+        <text x="183" y="272" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">고잔로</text>
+        <text x="530" y="272" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">고잔로</text>
+
+        <!-- ★ 학원 본원 (SBS) -->
+        <rect x="408" y="164" width="110" height="84" rx="6" fill="#fff7ed" stroke="#c8893a" stroke-width="1.5"/>
+        <rect x="408" y="164" width="110" height="22" rx="6" fill="#c8893a"/>
+        <rect x="408" y="178" width="110" height="8"  fill="#c8893a"/>
+        <text x="463" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff">SBS아카데미</text>
+        <text x="463" y="210" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#92521a">안산점 본원</text>
+        <text x="463" y="228" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#b8732a" opacity="0.8">929 중앙대로</text>
+        <text x="463" y="242" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#b8732a" opacity="0.8">3층</text>
+
+        <!-- ────────────────── 주차장 A ────────────────── -->
+        <!-- 본원 건물 주차 (본원 건물 하단부) -->
+        <rect x="408" y="164" width="110" height="84" rx="6" fill="none" stroke="#1a6fb5" stroke-width="0" />
+        <rect x="412" y="248" width="102" height="30" rx="4" fill="#dbeafe" stroke="#1a6fb5" stroke-width="1"/>
+        <text x="463" y="267" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#1a3a5c">🅿 본원 지하</text>
+        <!-- 배지 A -->
+        <rect x="412" y="164" width="22" height="22" rx="5" fill="#1a6fb5"/>
+        <text x="423" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">A</text>
+
+        <!-- ────────────────── 주차장 B ────────────────── -->
+        <!-- 공영유료 주차장 (우측 상단) -->
+        <rect x="530" y="164" width="120" height="70" rx="5" fill="#fef9ee" stroke="#c8893a" stroke-width="1"/>
+        <rect x="530" y="164" width="120" height="22" rx="5" fill="#c8893a" opacity="0.2"/>
+        <text x="590" y="179" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#8a5a10" font-weight="700">공영유료주차장</text>
+        <text x="590" y="198" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">30분 600원</text>
+        <text x="590" y="213" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#c8893a">⚠ 저녁 비추천</text>
+        <text x="590" y="226" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">일주차 9,000원</text>
+        <!-- 배지 B -->
+        <rect x="530" y="164" width="22" height="22" rx="5" fill="#c8893a"/>
+        <text x="541" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">B</text>
+        <!-- 연결선 A→B -->
+        <line x1="520" y1="200" x2="528" y2="200" stroke="#9a9890" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+        <!-- ────────────────── 주차장 C ────────────────── -->
+        <!-- 동원빌딩 공영주차장 (좌측 상단) -->
+        <rect x="30" y="164" width="130" height="72" rx="5" fill="#f9fafb" stroke="#5a5850" stroke-width="1"/>
+        <rect x="30" y="164" width="130" height="22" rx="5" fill="#5a5850" opacity="0.15"/>
+        <text x="95" y="179" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#3a3830" font-weight="700">동원빌딩 공영주차장</text>
+        <text x="95" y="198" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">30분 1,000원</text>
+        <text x="95" y="213" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">일주차 9,000원</text>
+        <text x="95" y="228" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">월주차 80,000원</text>
+        <!-- 배지 C -->
+        <rect x="30" y="164" width="22" height="22" rx="5" fill="#5a5850"/>
+        <text x="41" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">C</text>
+        <!-- 연결선 C→학원 -->
+        <line x1="160" y1="200" x2="348" y2="200" stroke="#9a9890" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <polygon points="348,196 356,200 348,204" fill="#9a9890"/>
+
+        <!-- ────────────────── 주차장 D ────────────────── -->
+        <!-- 중앙역 주차장 (하단) -->
+        <rect x="342" y="298" width="120" height="66" rx="5" fill="#e8f2ec" stroke="#2a5c3f" stroke-width="1.5"/>
+        <rect x="342" y="298" width="120" height="22" rx="5" fill="#2a5c3f" opacity="0.2"/>
+        <text x="402" y="313" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#1a3c2a" font-weight="700">중앙역 주차장</text>
+        <text x="402" y="330" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#2a5c3f">⭐ 추천</text>
+        <text x="402" y="344" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#5a9070">일주차 9,000원</text>
+        <text x="402" y="357" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#5a9070">월주차 80,000원</text>
+        <!-- 배지 D -->
+        <rect x="342" y="298" width="22" height="22" rx="5" fill="#2a5c3f"/>
+        <text x="353" y="314" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">D</text>
+        <!-- 연결선 D→학원 (수직) -->
+        <line x1="402" y1="296" x2="402" y2="260" stroke="#2a5c3f" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <polygon points="398,260 402,252 406,260" fill="#2a5c3f"/>
+
+        <!-- 보행자 경로 강조 (학원→D) -->
+        <text x="430" y="288" font-family="Pretendard,-apple-system,sans-serif" font-size="9" fill="#2a5c3f" opacity="0.7">도보 약 3분</text>
+
+        <!-- 나침반 -->
+        <g transform="translate(634,340)">
+          <circle cx="0" cy="0" r="18" fill="#fff" stroke="#e2e0d8" stroke-width="1"/>
+          <text x="0" y="-5"  text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9" font-weight="700" fill="#dc2626">N</text>
+          <text x="0" y="12" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="8" fill="#9a9890">S</text>
+          <line x1="0" y1="-14" x2="0" y2="2"   stroke="#dc2626" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="0" y1="2"   x2="0" y2="14"  stroke="#9a9890" stroke-width="1"   stroke-linecap="round"/>
+        </g>
+
+        <!-- 축척 -->
+        <line x1="30" y1="365" x2="130" y2="365" stroke="#9a9890" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="30" y1="360" x2="30"  y2="370" stroke="#9a9890" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="130" y1="360" x2="130" y2="370" stroke="#9a9890" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="80" y="377" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9" fill="#9a9890">약 300m</text>
+
+      </svg>
+    </div>
+
+    <!-- 주차장 카드 -->
+    <div class="parking-grid">
       <div class="parking-card">
-        <div class="parking-card-title">🅿️ 인근 공영주차장</div>
+        <div class="parking-card-title"><span class="parking-badge a">A</span>본원 건물 주차장</div>
         <div class="parking-rows">
-          <div class="parking-row"><span class="parking-label">위치</span><span class="parking-value">건물 우측 50m</span></div>
-          <div class="parking-row"><span class="parking-label">요금</span><span class="parking-value">최초 30분 무료</span></div>
-          <div class="parking-row"><span class="parking-label">이후 요금</span><span class="parking-value">10분당 200원</span></div>
+          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 1,000원</span></div>
+          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">30분당 1,000원</span></div>
+          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value">20,000원</span></div>
+          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value">80,000원</span></div>
+        </div>
+      </div>
+
+      <div class="parking-card warn">
+        <div class="parking-card-title"><span class="parking-badge b">B</span>공영유료주차장</div>
+        <div class="parking-rows">
+          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 600원</span></div>
+          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">10분당 300원</span></div>
+          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value amber">9,000원 (저녁 비추천)</span></div>
+          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value">–</span></div>
+        </div>
+      </div>
+
+      <div class="parking-card">
+        <div class="parking-card-title"><span class="parking-badge c">C</span>동원빌딩 공영주차장</div>
+        <div class="parking-rows">
+          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 1,000원</span></div>
+          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">10분당 500원</span></div>
+          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value">9,000원</span></div>
+          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value">80,000원</span></div>
+        </div>
+      </div>
+
+      <div class="parking-card recommend">
+        <div class="parking-card-title"><span class="parking-badge d">D</span>중앙역 주차장</div>
+        <div class="parking-rows">
+          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 1,000원</span></div>
+          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">10분당 500원</span></div>
+          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value">9,000원</span></div>
+          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value green">80,000원 (추천)</span></div>
         </div>
       </div>
     </div>
 
     <div class="notice-box">
-      <strong>📌 주차 안내</strong><br>
-      수강생은 1층 안내데스크에서 주차권 도장을 받으시면 2시간 무료로 이용하실 수 있습니다.<br>
-      도장은 수업일 당일에만 가능하며, 초과 시간은 유료입니다.
+      <strong>📌 주차 이용 안내</strong><br>
+      최초 1회 방문 시 무료, 2회 이후부터는 30분 무료로 이용하실 수 있습니다.<br>
+      자세한 주차 안내는 <strong>인포데스크</strong>에 문의해 주세요.<br>
+      월주차 이용 시 <strong>D 중앙역 주차장</strong>을 추천드립니다.
     </div>
+
   </div>
 </div>
 
@@ -1787,9 +2121,7 @@ function setTab(ns, key, btn) {
     });
   }
   if (ns === 'co') {
-    document.querySelectorAll('.company-card').forEach(c => {
-      c.style.display = (key === 'all' || c.dataset.cat === key) ? '' : 'none';
-    });
+    renderCompanyGrid(key);
   }
 }
 
@@ -1820,6 +2152,7 @@ const exams = [
 
 (function buildExams() {
   const list = document.getElementById('exam-list');
+  if (!list) return;
   const now = new Date();
   exams.forEach(e => {
     const item = document.createElement('div');
@@ -1841,61 +2174,169 @@ const exams = [
 })();
 
 /* ── COMPANY DATA ── */
+
 const companies = [
-  { name:'애경산업', field:'화장품·생활용품 디자인', cat:'디자인', url:'https://www.aekyung.co.kr', icon:'🏭' },
-  { name:'LG생활건강', field:'패키지·브랜드 디자인', cat:'디자인', url:'https://www.lgcare.com', icon:'🌿' },
-  { name:'아모레퍼시픽', field:'뷰티 브랜드 디자인', cat:'디자인', url:'https://www.amorepacific.com', icon:'💄' },
-  { name:'빙그레', field:'식품 패키지 디자인', cat:'디자인', url:'https://www.binggrae.co.kr', icon:'🍦' },
-  { name:'CJ제일제당', field:'식품·생활 디자인', cat:'디자인', url:'https://www.cj.co.kr', icon:'🍱' },
-  { name:'삼성전자', field:'제품·UI 디자인', cat:'디자인', url:'https://www.samsung.com/sec', icon:'📱' },
-  { name:'오토데스크', field:'AutoCAD · 3ds Max', cat:'3D/CAD', url:'https://www.autodesk.co.kr', icon:'🔧' },
-  { name:'트림블', field:'스케치업 공식', cat:'3D/CAD', url:'https://www.sketchup.com', icon:'🏗️' },
-  { name:'다쏘시스템', field:'3D 설계 솔루션', cat:'3D/CAD', url:'https://www.3ds.com/ko', icon:'⚙️' },
-  { name:'한국생산성본부', field:'컴활 자격증 정보', cat:'IT', url:'https://www.kpc.or.kr', icon:'🏛️' },
-  { name:'대한상공회의소', field:'전산세무·회계 정보', cat:'IT', url:'https://license.korcham.net', icon:'💼' },
-  { name:'한국컬러산업협회', field:'컬러리스트 정보', cat:'IT', url:'https://www.kcia.or.kr', icon:'🎨' },
-  { name:'큐넷', field:'국가자격증 정보', cat:'IT', url:'https://www.q-net.or.kr', icon:'📋' },
-  { name:'MS 서티포트', field:'MOS 자격증 정보', cat:'IT', url:'https://certiport.pearsonvue.com', icon:'🖥️' },
+  // 인테리어
+  { name: '국보디자인',       cat: '인테리어',      url: 'https://www.ikukbo.com',                       emoji: '🏛️' },
+  { name: '지랩',             cat: '인테리어',      url: 'http://z-lab.co.kr/',                          emoji: '🏠' },
+  { name: '두양건축',         cat: '인테리어',      url: 'https://www.dykc.co.kr/',                      emoji: '🏗️' },
+  { name: '희림건축',         cat: '인테리어',      url: 'https://www.heerim.com/',                      emoji: '🏢' },
+  { name: '더 퍼스트펭귄',   cat: '인테리어',      url: 'http://t-fp.kr/',                              emoji: '🐧' },
+  { name: '엄지하우스',       cat: '인테리어',      url: 'https://www.eomjihouse.co.kr',                 emoji: '🏡' },
+  { name: '은민에스엔디',     cat: '인테리어',      url: 'http://www.eunmin.co.kr',                      emoji: '🔧' },
+  { name: '시공테크',         cat: '인테리어',      url: 'https://www.sigongtech.co.kr',                 emoji: '⚙️' },
+  { name: '다원디자인',       cat: '인테리어',      url: 'http://www.dawon.com',                         emoji: '✏️' },
+  { name: '삼원S&D',          cat: '인테리어',      url: 'http://samwonsd.co.kr',                        emoji: '🏗️' },
+  { name: '삼우종합건축',     cat: '인테리어',      url: 'https://www.samoo.com/',                       emoji: '🏛️' },
+
+  // 웹/편집디자인
+  { name: '허스키폭스',       cat: '웹/편집디자인', url: 'https://huskyfox.com/',                        emoji: '🦊' },
+  { name: '디파이',           cat: '웹/편집디자인', url: 'https://www.dfy.co.kr',                        emoji: '💡' },
+  { name: 'BAT',              cat: '웹/편집디자인', url: 'https://batcrew.co.kr/ko/',                    emoji: '🦇' },
+  { name: '엠싱크',           cat: '웹/편집디자인', url: 'http://www.m-sync.co.kr',                      emoji: '🔗' },
+  { name: '플러스엑스',       cat: '웹/편집디자인', url: 'https://www.plus-ex.com/',                     emoji: '➕' },
+  { name: '스튜디오fnt',      cat: '웹/편집디자인', url: 'https://studiofnt.com/',                       emoji: '🔤' },
+  { name: 'CFC',              cat: '웹/편집디자인', url: 'https://contentformcontext.com/',              emoji: '📐' },
+  { name: '더위버',           cat: '웹/편집디자인', url: 'http://theuber.co.kr',                         emoji: '🕸️' },
+  { name: '바이닐씨',         cat: '웹/편집디자인', url: 'https://www.vinylc.com/ko',                    emoji: '🎵' },
+  { name: '라커너스',         cat: '웹/편집디자인', url: 'https://www.reconers.com',                     emoji: '🎨' },
+  { name: '뮤자인',           cat: '웹/편집디자인', url: 'https://musign.net',                           emoji: '🎼' },
+  { name: '펜타브리드',       cat: '웹/편집디자인', url: 'https://www.pentabreed.com/',                  emoji: '🖥️' },
+  { name: '소이정',           cat: '웹/편집디자인', url: 'https://soijeong.com',                         emoji: '🌿' },
+  { name: '토탈임팩트',       cat: '웹/편집디자인', url: 'https://total-impact.net/',                    emoji: '💥' },
+  { name: '소디움파트너스',   cat: '웹/편집디자인', url: 'https://www.sodiumpartners.com/',              emoji: '🧪' },
+  { name: '인하우스',         cat: '웹/편집디자인', url: null, emoji: '🏢', note: '아모레퍼시픽디자인센터 / 현대자동차크리에이티브센터 / 배달의민족 등' },
+
+  // 모션/VFX
+  { name: '자이언트스텝',     cat: '모션/VFX',      url: 'http://www.giantstep.co.kr/',                  emoji: '🚀' },
+  { name: '웨스트월드',       cat: '모션/VFX',      url: 'https://www.westworld.co.kr/',                 emoji: '🌎' },
+  { name: '델픽디자인스튜디오', cat: '모션/VFX',    url: 'https://delpic.com/main',                      emoji: '🔮' },
+  { name: 'M83',              cat: '모션/VFX',      url: 'https://www.m83.co.kr/',                       emoji: '🎬' },
+  { name: '슈퍼베리',         cat: '모션/VFX',      url: 'https://superverymore.tv/projects',            emoji: '🫐' },
+  { name: '덱스터스튜디오',   cat: '모션/VFX',      url: 'https://dexterstudios.com/',                   emoji: '🎥' },
+  { name: '스튜디오미르',     cat: '모션/VFX',      url: 'https://www.studiomir.co.kr/',                 emoji: '🌀' },
+  { name: '로커스',           cat: '모션/VFX',      url: 'https://locus.com/',                           emoji: '📍' },
+  { name: '위지윅스튜디오',   cat: '모션/VFX',      url: 'https://www.wswgstudios.com',                  emoji: '✨' },
+  { name: 'SAMG엔터',         cat: '모션/VFX',      url: 'https://samg.net/',                            emoji: '🎞️' },
+  { name: '엘리엇',           cat: '모션/VFX',      url: 'http://eliot.co.kr/',                          emoji: '⚡' },
+  { name: '빅슨커뮤니케이션', cat: '모션/VFX',      url: 'http://www.vixenvfxstudio.com/kr/',            emoji: '🦊' },
+  { name: 'VA코퍼레이션',     cat: '모션/VFX',      url: 'https://vacorp.co.kr/home/v2/',                emoji: '🎭' },
+  { name: '비전홀딩스',       cat: '모션/VFX',      url: 'http://visionholdingscorp.com/',               emoji: '👁️' },
+  { name: '모팩',             cat: '모션/VFX',      url: 'https://www.mofacstudios.com/',                emoji: '🎪' },
+  { name: '디자인피버',       cat: '모션/VFX',      url: 'https://designfever.com/',                     emoji: '🔥' },
+  { name: '걸리버스튜디오',   cat: '모션/VFX',      url: 'https://www.gulliverstudios.com/about',        emoji: '🗺️' },
 ];
 
-(function buildCompanies() {
+const companyCategoryLabels = {
+  '인테리어':      '🏠 인테리어 학과',
+  '웹/편집디자인': '🖥️ 웹디자인 · 편집디자인',
+  '모션/VFX':      '🎬 모션그래픽 · 영상 · CG · VFX',
+};
+
+function renderCompanyGrid(tab) {
   const grid = document.getElementById('company-grid');
-  companies.forEach(c => {
-    const card = document.createElement('a');
-    card.className = 'company-card';
-    card.dataset.cat = c.cat;
-    card.href = c.url;
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
-    card.innerHTML = `
-      <div class="company-logo">${c.icon}</div>
-      <div>
-        <div class="company-name">${c.name}</div>
-        <div class="company-field">${c.field}</div>
-      </div>
-      <div class="company-ext"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H7M12 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
-    grid.appendChild(card);
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  const cats = tab === 'all'
+    ? ['인테리어', '웹/편집디자인', '모션/VFX']
+    : [tab];
+
+  cats.forEach(cat => {
+    const items = companies.filter(c => c.cat === cat);
+    if (!items.length) return;
+
+    if (tab === 'all') {
+      const label = document.createElement('div');
+      label.className = 'group-label';
+      label.textContent = companyCategoryLabels[cat];
+      grid.appendChild(label);
+    }
+
+    items.forEach(c => {
+      const card = document.createElement(c.url ? 'a' : 'div');
+      card.className = 'company-card';
+      if (c.url) {
+        card.href = c.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      }
+      card.innerHTML = `
+        <div class="company-logo">${c.emoji}</div>
+        <div>
+          <div class="company-name">${c.name}</div>
+          <div class="company-field">${c.note || cat}</div>
+        </div>
+        ${c.url ? `
+        <div class="company-ext">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M9 2h5v5M14 2L8 8"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>` : ''}
+      `;
+      grid.appendChild(card);
+    });
   });
-})();
+}
+
+renderCompanyGrid('all');
 
 /* ── PROGRAMS DATA ── */
 const programs = [
-  { icon:'🖥️', name:'3ds Max', version:'2026', bg:'#fff3e0', note:'301호' },
-  { icon:'📐', name:'AutoCAD', version:'2025', bg:'#fff3e0', note:'302호' },
-  { icon:'🏗️', name:'SketchUp Pro', version:'2024', bg:'#fff3e0', note:'303호' },
-  { icon:'🎨', name:'Photoshop', version:'CC 2025', bg:'#e8f4fd', note:'201·202호' },
-  { icon:'✏️', name:'Illustrator', version:'CC 2025', bg:'#e8f4fd', note:'201·202호' },
-  { icon:'📄', name:'InDesign', version:'CC 2025', bg:'#e8f4fd', note:'202호' },
-  { icon:'🖼️', name:'포토웍스', version:'9.5', bg:'#e8f4fd', note:'203호' },
-  { icon:'💻', name:'한컴오피스', version:'2022', bg:'#f3e5f5', note:'401호' },
-  { icon:'📊', name:'Microsoft 365', version:'(MOS용)', bg:'#f3e5f5', note:'401호' },
-  { icon:'🧮', name:'더존 SmartA', version:'2025', bg:'#e8f5e9', note:'501호' },
-  { icon:'📒', name:'ERP 전산세무', version:'2025', bg:'#e8f5e9', note:'501호' },
+  // 디자인 공통
+  { icon:'🖊️',  name:'MS 365',              version:'Microsoft 365',     bg:'#e8f4fd', cat:'디자인 공통' },
+  { icon:'🎨',  name:'Adobe CC',             version:'2024',              bg:'#e8f4fd', cat:'디자인 공통' },
+
+  // 인테리어 · 건축
+  { icon:'📐',  name:'AutoCAD',              version:'2025',              bg:'#fff3e0', cat:'인테리어 · 건축' },
+  { icon:'🏗️',  name:'SketchUp',             version:'2023 / 2025',       bg:'#fff3e0', cat:'인테리어 · 건축' },
+  { icon:'🌅',  name:'V-Ray',                version:'2025 (7.10)',       bg:'#fff3e0', cat:'인테리어 · 건축' },
+  { icon:'✨',  name:'Enscape',              version:'2023 / 4.9',        bg:'#fff3e0', cat:'인테리어 · 건축' },
+
+  // 모션 · VFX · CG
+  { icon:'🎬',  name:'Maya',                 version:'2025',              bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🔷',  name:'Cinema 4D',            version:'2025',              bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🟠',  name:'Substance Painter',    version:'11.0.2',            bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🔵',  name:'Octane Render',        version:'2025 (Demo)',       bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🗿',  name:'ZBrush',               version:'2022.0.2',          bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🌊',  name:'Houdini',              version:'21.0.631',          bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🎯',  name:'PFTrack',              version:'12.4.1',            bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'📷',  name:'Boujou',               version:'5.0.2',             bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🎮',  name:'Unreal Engine',        version:'19.2.3',            bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+  { icon:'🔥',  name:'Nuke',                 version:'—',                 bg:'#f3e5f5', cat:'모션 · VFX · CG' },
+
+  // 개발 · AI
+  { icon:'🐍',  name:'Python',               version:'—',                 bg:'#e8f5e9', cat:'개발 · AI' },
+  { icon:'💻',  name:'Visual Studio',        version:'—',                 bg:'#e8f5e9', cat:'개발 · AI' },
+  { icon:'📝',  name:'VS Code',              version:'—',                 bg:'#e8f5e9', cat:'개발 · AI' },
+  { icon:'🔧',  name:'Git',                  version:'—',                 bg:'#e8f5e9', cat:'개발 · AI' },
+  { icon:'☕',  name:'IntelliJ',             version:'—',                 bg:'#e8f5e9', cat:'개발 · AI' },
+  { icon:'🤖',  name:'Stability Matrix',     version:'(ComfyUI)',         bg:'#e8f5e9', cat:'개발 · AI' },
+  { icon:'🪂',  name:'Antigravity',          version:'—',                 bg:'#e8f5e9', cat:'개발 · AI' },
 ];
 
 (function buildPrograms() {
   const grid = document.getElementById('prog-grid');
+  if (!grid) return;
+
+  const catColors = {
+    '디자인 공통':    '#e8f2ec',
+    '인테리어 · 건축': '#fff3e0',
+    '모션 · VFX · CG': '#f3e5f5',
+    '개발 · AI':       '#e8f5e9',
+  };
+
+  let currentCat = null;
   programs.forEach(p => {
+    if (p.cat !== currentCat) {
+      currentCat = p.cat;
+      const label = document.createElement('div');
+      label.className = 'group-label';
+      label.style.cssText = 'grid-column:1/-1;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;padding:.5rem 0 .25rem;border-bottom:1px solid var(--border);margin-top:.5rem;';
+      label.textContent = p.cat;
+      grid.appendChild(label);
+    }
     const card = document.createElement('div');
     card.className = 'prog-card';
     card.innerHTML = `
@@ -1903,8 +2344,7 @@ const programs = [
       <div>
         <div class="prog-name">${p.name}</div>
         <div class="prog-version">${p.version}</div>
-      </div>
-      <span class="prog-badge">${p.note}</span>`;
+      </div>`;
     grid.appendChild(card);
   });
 })();
@@ -2099,5 +2539,7 @@ document.addEventListener('keydown', function(e){
   </div>
 </div>
 
+
+<!-- 학과별 기업 섹션 적용 완료: 인테리어 / 웹·편집디자인 / 모션·영상·VFX -->
 </body>
 </html>
