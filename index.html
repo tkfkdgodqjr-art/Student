@@ -748,7 +748,7 @@
     <!-- 9일제 격일 : 이미지 그대로 -->
     <div id="sch-day9" style="display:none">
       <div class="cal-wrap">
-        <div class="cal-header">5월 13일 ~ 6월 8일</div>
+        <div class="cal-header">5월 13일 ~ 6월 10일</div>
         <div class="cal-grid">
           <div class="cal-dow">월</div>
           <div class="cal-dow">화</div>
@@ -773,16 +773,16 @@
           <div class="cal-cell"><div class="cal-date">27</div><div class="cal-block mwf">월수금</div></div>
           <div class="cal-cell"><div class="cal-date">28</div><div class="cal-block twf">화목금</div></div>
           <div class="cal-cell"><div class="cal-date">29</div><div class="cal-block mwf">월수금</div></div>
-          <!-- week4 : 1월수금, 2화목금, 3월수금, 4화목금, 5화목금 -->
+          <!-- week4 : 1월수금, 2화목금, 3지방선거, 4화목금, 5화목금 -->
           <div class="cal-cell"><div class="cal-date">1</div><div class="cal-block mwf">월수금</div></div>
           <div class="cal-cell"><div class="cal-date">2</div><div class="cal-block twf">화목금</div></div>
-          <div class="cal-cell"><div class="cal-date">3</div><div class="cal-block mwf">월수금</div></div>
+          <div class="cal-cell"><div class="cal-date holiday">3</div><div class="cal-block holiday-note">지방선거</div></div>
           <div class="cal-cell"><div class="cal-date">4</div><div class="cal-block twf">화목금</div></div>
           <div class="cal-cell"><div class="cal-date">5</div><div class="cal-block twf">화목금</div></div>
-          <!-- week5 : 8(월)월수금만, 나머지 비어있음 -->
+          <!-- week5 : 8(월), 10(수) 월수금 -->
           <div class="cal-cell"><div class="cal-date">8</div><div class="cal-block mwf">월수금</div></div>
           <div class="cal-cell empty"><div class="cal-date">9</div></div>
-          <div class="cal-cell empty"><div class="cal-date">10</div></div>
+          <div class="cal-cell"><div class="cal-date">10</div><div class="cal-block mwf">월수금</div></div>
           <div class="cal-cell empty"></div>
           <div class="cal-cell empty"></div>
         </div>
@@ -1310,18 +1310,21 @@
 .info-bar i{font-size:15px;color:var(--color-text-tertiary);flex-shrink:0;margin-top:1px}
 .sec-label{font-size:11px;font-weight:500;letter-spacing:.07em;color:var(--color-text-tertiary);text-transform:uppercase;margin-bottom:.6rem}
 .c-list{display:flex;flex-direction:column;margin-bottom:1.5rem}
-.c-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:0.5px solid var(--color-border-tertiary);transition:background .12s}
+.c-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
 .c-row:last-child{border-bottom:none}
-.c-row.exam-today{background:#FAEEDA;border-radius:8px;padding:11px 8px;margin:0 -8px}
-.c-row.exam-upcoming{background:#EAF3DE;border-radius:8px;padding:11px 8px;margin:0 -8px}
+/* 가장 가까운 시험 강조 */
+.c-row.nearest{border-radius:10px;padding:12px 10px;margin:2px -10px;border-bottom:none !important}
+.c-row.nearest + .c-row{border-top:0.5px solid var(--color-border-tertiary)}
 .c-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px}
 .c-info{flex:1;min-width:0}
-.c-info-name{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.c-info-name{font-size:13px;font-weight:500;color:var(--color-text-primary);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nearest-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;white-space:nowrap}
 .c-info-date{font-size:12px;color:var(--color-text-secondary);margin-top:3px;line-height:1.7}
-.exam-date-highlight{display:inline-block;font-weight:500;padding:1px 7px;border-radius:5px}
-.c-dday{font-size:11px;font-weight:500;padding:3px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;margin-top:2px}
-.dday-past{background:var(--color-background-secondary);color:var(--color-text-tertiary)}
-.dday-soon{background:#EF9F27;color:#412402}
+.exam-date-hl{display:inline-block;font-weight:600;padding:1px 7px;border-radius:5px}
+.c-dday{font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.dday-past{background:var(--color-background-secondary);color:var(--color-text-tertiary);font-weight:400}
+.dday-soon{background:#EF9F27;color:#fff}
+.dday-near{background:#FAEEDA;color:#633806}
 .dday-future{background:var(--color-background-secondary);color:var(--color-text-secondary)}
 .note-box{background:var(--color-background-secondary);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:1.5rem}
 .session-grid{display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem}
@@ -1331,19 +1334,19 @@
 .session-subj{font-size:12px;color:var(--color-text-secondary)}
 .mos-box{background:var(--color-background-secondary);border-radius:10px;padding:14px 16px;margin-bottom:1rem;border:0.5px solid var(--color-border-tertiary)}
 .mos-box-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.6rem;display:flex;align-items:center;gap:7px}
-.mos-box-title i{font-size:16px}
-.mos-table{width:100%;border-collapse:collapse}
-.mos-table th{font-size:11px;color:var(--color-text-tertiary);font-weight:500;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);text-align:left}
-.mos-table td{font-size:13px;color:var(--color-text-secondary);padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
-.mos-table tr:last-child td{border-bottom:none}
-.mos-table td.exam-d{font-weight:500;color:var(--color-text-primary)}
-.mos-date-badge{display:inline-block;padding:2px 8px;border-radius:5px;font-weight:500;font-size:12px}
+.mos-month-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+.mos-tbl-wrap{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;margin-bottom:1rem}
+.mos-tbl{width:100%;border-collapse:collapse}
+.mos-tbl th{background:var(--color-background-secondary);padding:8px 14px;font-size:11px;color:var(--color-text-tertiary);font-weight:500;border-bottom:0.5px solid var(--color-border-tertiary);text-align:left}
+.mos-tbl td{padding:9px 14px;font-size:13px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.mos-tbl tr:last-child td{border-bottom:none}
+.mos-tbl tr:hover td{background:var(--color-background-secondary)}
+.mos-date-cell{font-weight:500;color:var(--color-text-primary)}
+.mos-time-cell{color:var(--color-text-secondary)}
 .site-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:8px 16px;border-radius:8px;cursor:pointer;border:0.5px solid var(--color-border-secondary);background:transparent;text-decoration:none;color:var(--color-text-primary);transition:background .15s}
 .site-btn:hover{background:var(--color-background-secondary)}
 .site-btn i{font-size:15px}
 </style>
-
-<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">2026년 자격증 시험 일정</h2>
 
 <div class="wrap">
   <div class="outer">
@@ -1367,37 +1370,54 @@
 <script>
 const TODAY = new Date('2026-05-11');
 
-function getDday(dateStr){
-  const d = new Date(dateStr);
-  const diff = Math.round((d - TODAY)/(1000*60*60*24));
-  if(diff < 0) return {text:'종료',cls:'dday-past'};
+// 날짜 파싱 (2026-MM-DD)
+function parseDate(s){ return new Date(s); }
+function diffDays(d){ return Math.round((parseDate(d)-TODAY)/(86400000)); }
+
+function getDdayInfo(diff){
+  if(diff < 0)  return {text:'종료',cls:'dday-past'};
   if(diff === 0) return {text:'D-Day',cls:'dday-soon'};
-  if(diff <= 30) return {text:'D-'+diff,cls:'dday-soon'};
+  if(diff <= 14) return {text:'D-'+diff,cls:'dday-soon'};
+  if(diff <= 60) return {text:'D-'+diff,cls:'dday-near'};
   return {text:'D-'+diff,cls:'dday-future'};
 }
 
-function getRowCls(dateStr){
-  const d = new Date(dateStr);
-  const diff = Math.round((d - TODAY)/(1000*60*60*24));
-  if(diff === 0) return 'exam-today';
-  if(diff > 0 && diff <= 30) return 'exam-upcoming';
-  return '';
+// 각 탭의 rows에서 실기시험 기준 가장 가까운 미래 index 찾기
+function findNearest(rows){
+  let nearIdx = -1, nearDiff = Infinity;
+  rows.forEach((r,i)=>{
+    const d = diffDays(r.examDate);
+    if(d >= 0 && d < nearDiff){ nearDiff=d; nearIdx=i; }
+  });
+  return nearIdx;
 }
 
 function renderRows(rows, numBg, numColor, accentColor){
+  const nearIdx = findNearest(rows);
   return rows.map((r,i)=>{
-    const dd = getDday(r.date);
-    const rowCls = getRowCls(r.date);
+    const diff = diffDays(r.examDate);
+    const dd = getDdayInfo(diff);
+    const isNearest = i === nearIdx;
+
+    // 각 col 렌더
     const colLines = Object.entries(r.cols).map(([k,v])=>{
-      if(k==='시험일'||k==='exam'){
-        return `<span style="color:var(--color-text-tertiary)">${k}</span> <span class="exam-date-highlight" style="background:${accentColor}22;color:${accentColor}">${v}</span>`;
+      if(k==='시험일'){
+        return `<span style="color:var(--color-text-tertiary)">시험일</span> <span class="exam-date-hl" style="background:${accentColor}22;color:${accentColor}">${v}</span>`;
       }
       return `<span style="color:var(--color-text-tertiary)">${k}</span> ${v.replace(/\n/g,'<br>')}`;
     }).join(' &nbsp;·&nbsp; ');
-    return `<div class="c-row ${rowCls}">
+
+    const nearestStyle = isNearest
+      ? `background:${accentColor}12;border:1px solid ${accentColor}44;`
+      : '';
+    const nearestTag = isNearest
+      ? `<span class="nearest-tag" style="background:${accentColor};color:#fff">가장 가까운 시험</span>`
+      : '';
+
+    return `<div class="c-row${isNearest?' nearest':''}" style="${nearestStyle}">
       <div class="c-num" style="background:${numBg};color:${numColor}">${i+1}</div>
       <div class="c-info">
-        <div class="c-info-name">${r.name}</div>
+        <div class="c-info-name">${r.name}${nearestTag}</div>
         <div class="c-info-date">${colLines}</div>
       </div>
       <span class="c-dday ${dd.cls}">${dd.text}</span>
@@ -1411,12 +1431,12 @@ const TABS = {
     info:'주관: 한국세무사회 | 연 6회 시행 | 전산세무·전산회계·세무회계·기업회계 동일 시험일',
     count:'연 6회',
     rows:[
-      {name:'제124회',date:'2026-01-31',cols:{시험일:'01.31 (토)',접수기간:'01.02 ~ 01.08',합격발표:'02.26 (목)'}},
-      {name:'제125회',date:'2026-04-04',cols:{시험일:'04.04 (토)',접수기간:'03.05 ~ 03.11',합격발표:'04.23 (목)'}},
-      {name:'제126회',date:'2026-06-06',cols:{시험일:'06.06 (토)',접수기간:'04.30 ~ 05.06',합격발표:'06.25 (목)'}},
-      {name:'제127회',date:'2026-08-01',cols:{시험일:'08.01 (토)',접수기간:'07.02 ~ 07.08',합격발표:'08.20 (목)'}},
-      {name:'제128회',date:'2026-10-03',cols:{시험일:'10.03 (토)',접수기간:'08.27 ~ 09.02',합격발표:'10.29 (목)'}},
-      {name:'제129회',date:'2026-12-05',cols:{시험일:'12.05 (토)',접수기간:'11.05 ~ 11.11',합격발표:'12.24 (목)'}},
+      {name:'제124회',examDate:'2026-01-31',cols:{시험일:'01.31 (토)',접수기간:'01.02 ~ 01.08',합격발표:'02.26 (목)'}},
+      {name:'제125회',examDate:'2026-04-04',cols:{시험일:'04.04 (토)',접수기간:'03.05 ~ 03.11',합격발표:'04.23 (목)'}},
+      {name:'제126회',examDate:'2026-06-06',cols:{시험일:'06.06 (토)',접수기간:'04.30 ~ 05.06',합격발표:'06.25 (목)'}},
+      {name:'제127회',examDate:'2026-08-01',cols:{시험일:'08.01 (토)',접수기간:'07.02 ~ 07.08',합격발표:'08.20 (목)'}},
+      {name:'제128회',examDate:'2026-10-03',cols:{시험일:'10.03 (토)',접수기간:'08.27 ~ 09.02',합격발표:'10.29 (목)'}},
+      {name:'제129회',examDate:'2026-12-05',cols:{시험일:'12.05 (토)',접수기간:'11.05 ~ 11.11',합격발표:'12.24 (목)'}},
     ],
     sessions:[
       {name:'1교시',time:'오전 09:00',subj:'세무회계 / 기업회계'},
@@ -1428,13 +1448,13 @@ const TABS = {
   },
   기능사:{
     color:'#085041',bgColor:'#E1F5EE',numBg:'#9FE1CB',numColor:'#085041',accentColor:'#0F6E56',
-    info:'주관: 큐넷(한국산업인력공단) | 연 4회 정기시험 | 필기접수→필기시험→실기접수→실기시험 순',
+    info:'주관: 큐넷(한국산업인력공단) | 연 4회 정기시험 | 실기시험 기준 D-day 표시',
     count:'연 4회',
     rows:[
-      {name:'1회차',date:'2026-03-14',cols:{필기접수:'1. 6(화)~1. 9(금)',필기시험:'1. 20(화)~1. 24(토)',필기합격자발표:'1. 30(금)',실기접수:'2. 2(월)~2. 5(목)',시험일:'3. 14(토)~4. 1(수)',합격자발표:'1차 4. 10(금) / 2차 4. 17(금)'}},
-      {name:'2회차',date:'2026-05-30',cols:{필기접수:'3. 16(월)~3. 20(금)\n*3. 18(수) 제외',필기시험:'4. 4(토)~4. 9(목)',필기합격자발표:'4. 22(수)',실기접수:'4. 27(월)~4. 30(목)',시험일:'5. 30(토)~6. 14(일)',합격자발표:'1차 6. 26(금) / 2차 7. 3(금)'}},
-      {name:'3회차',date:'2026-08-29',cols:{필기접수:'6. 8(월)~6. 11(목)',필기시험:'6. 27(토)~7. 2(목)',필기합격자발표:'7. 15(수)',실기접수:'7. 27(월)~7. 30(목)',시험일:'8. 29(토)~9. 16(수)',합격자발표:'1차 10. 2(금) / 2차 10. 8(목)'}},
-      {name:'4회차',date:'2026-11-14',cols:{필기접수:'8. 24(월)~8. 27(목)',필기시험:'9. 16(수)~9. 21(월)',필기합격자발표:'10. 7(수)',실기접수:'10. 12(월)~10. 15(목)',시험일:'11. 14(토)~12. 2(수)',합격자발표:'1차 12. 11(금) / 2차 12. 18(금)'}},
+      {name:'1회차',examDate:'2026-03-14',cols:{필기접수:'1. 6(화)~1. 9(금)',필기시험:'1. 20(화)~1. 24(토)',필기합격자발표:'1. 30(금)',실기접수:'2. 2(월)~2. 5(목)',시험일:'3. 14(토)~4. 1(수)',합격자발표:'1차 4. 10(금) / 2차 4. 17(금)'}},
+      {name:'2회차',examDate:'2026-05-30',cols:{필기접수:'3. 16(월)~3. 20(금)\n*3. 18(수) 제외',필기시험:'4. 4(토)~4. 9(목)',필기합격자발표:'4. 22(수)',실기접수:'4. 27(월)~4. 30(목)',시험일:'5. 30(토)~6. 14(일)',합격자발표:'1차 6. 26(금) / 2차 7. 3(금)'}},
+      {name:'3회차',examDate:'2026-08-29',cols:{필기접수:'6. 8(월)~6. 11(목)',필기시험:'6. 27(토)~7. 2(목)',필기합격자발표:'7. 15(수)',실기접수:'7. 27(월)~7. 30(목)',시험일:'8. 29(토)~9. 16(수)',합격자발표:'1차 10. 2(금) / 2차 10. 8(목)'}},
+      {name:'4회차',examDate:'2026-11-14',cols:{필기접수:'8. 24(월)~8. 27(목)',필기시험:'9. 16(수)~9. 21(월)',필기합격자발표:'10. 7(수)',실기접수:'10. 12(월)~10. 15(목)',시험일:'11. 14(토)~12. 2(수)',합격자발표:'1차 12. 11(금) / 2차 12. 18(금)'}},
     ],
     sessions:[
       {name:'필기시험',time:'지정일 09:00~',subj:'CBT 방식 / 종목별 상이'},
@@ -1445,12 +1465,12 @@ const TABS = {
   },
   기사산업기사:{
     color:'#712B13',bgColor:'#FAECE7',numBg:'#F5C4B3',numColor:'#712B13',accentColor:'#993C1D',
-    info:'주관: 큐넷(한국산업인력공단) | 연 3회 정기시험 | 필기→실기 순차 응시',
+    info:'주관: 큐넷(한국산업인력공단) | 연 3회 정기시험 | 실기시험 기준 D-day 표시',
     count:'연 3회',
     rows:[
-      {name:'1회차',date:'2026-01-30',cols:{필기접수:'1. 12(월)~1. 15(목)',필기시험:'1. 30(금)~3. 3(화)',필기합격자발표:'3. 11(수)',실기접수:'3. 23(월)~3. 26(목)',시험일:'4. 18(토)~5. 6(수)',합격자발표:'1차 6. 5(금) / 2차 6. 12(금)'}},
-      {name:'2회차',date:'2026-05-09',cols:{필기접수:'4. 20(월)~4. 23(목)',필기시험:'5. 9(토)~5. 29(금)',필기합격자발표:'6. 10(수)',실기접수:'6. 22(월)~6. 25(목)',시험일:'7. 18(토)~8. 5(수)',합격자발표:'1차 9. 4(금) / 2차 9. 11(금)'}},
-      {name:'3회차',date:'2026-08-07',cols:{필기접수:'7. 20(월)~7. 23(목)',필기시험:'8. 7(금)~9. 1(화)',필기합격자발표:'9. 9(수)',실기접수:'9. 21(월)~9. 23(수)\n추가접수: 9. 28(월)',시험일:'10. 24(토)~11. 13(금)',합격자발표:'1차 12. 11(금) / 2차 12. 18(금)'}},
+      {name:'1회차',examDate:'2026-04-18',cols:{필기접수:'1. 12(월)~1. 15(목)',필기시험:'1. 30(금)~3. 3(화)',필기합격자발표:'3. 11(수)',실기접수:'3. 23(월)~3. 26(목)',시험일:'4. 18(토)~5. 6(수)',합격자발표:'1차 6. 5(금) / 2차 6. 12(금)'}},
+      {name:'2회차',examDate:'2026-07-18',cols:{필기접수:'4. 20(월)~4. 23(목)',필기시험:'5. 9(토)~5. 29(금)',필기합격자발표:'6. 10(수)',실기접수:'6. 22(월)~6. 25(목)',시험일:'7. 18(토)~8. 5(수)',합격자발표:'1차 9. 4(금) / 2차 9. 11(금)'}},
+      {name:'3회차',examDate:'2026-10-24',cols:{필기접수:'7. 20(월)~7. 23(목)',필기시험:'8. 7(금)~9. 1(화)',필기합격자발표:'9. 9(수)',실기접수:'9. 21(월)~9. 23(수)\n추가접수: 9. 28(월)',시험일:'10. 24(토)~11. 13(금)',합격자발표:'1차 12. 11(금) / 2차 12. 18(금)'}},
     ],
     sessions:[
       {name:'필기시험',time:'지정기간 내',subj:'CBT 방식 / 종목별 상이'},
@@ -1464,17 +1484,17 @@ const TABS = {
     info:'주관: 한국생산성본부(KPC) | 연 12회 시행 | GTQ·GTQi·GTQid 포함',
     count:'연 12회',
     rows:[
-      {name:'제2회 GTQ/GTQi',date:'2026-02-28',cols:{시험일:'02. 28 (토)',온라인원서접수:'01. 28 ~ 02. 04',방문접수:'02. 04',수험표공고:'02. 19 ~ 02. 28',성적공고:'03. 20 ~ 03. 27'}},
-      {name:'제3회 GTQ/GTQi',date:'2026-03-28',cols:{시험일:'03. 28 (토)',온라인원서접수:'02. 25 ~ 03. 04',방문접수:'03. 04',수험표공고:'03. 19 ~ 03. 28',성적공고:'04. 17 ~ 04. 24'}},
-      {name:'제4회 GTQ/GTQi',date:'2026-04-25',cols:{시험일:'04. 25 (토)',온라인원서접수:'03. 25 ~ 04. 01',방문접수:'04. 01',수험표공고:'04. 16 ~ 04. 25',성적공고:'05. 15 ~ 05. 22'}},
-      {name:'제5회 GTQ/GTQi/GTQid',date:'2026-05-30',cols:{시험일:'05. 30 (토)',온라인원서접수:'04. 29 ~ 05. 06',방문접수:'05. 06',수험표공고:'05. 21 ~ 05. 30',성적공고:'06. 26 ~ 07. 03'}},
-      {name:'제6회 GTQ/GTQi',date:'2026-06-27',cols:{시험일:'06. 27 (토)',온라인원서접수:'05. 27 ~ 06. 04',방문접수:'06. 04',수험표공고:'06. 18 ~ 06. 27',성적공고:'07. 17 ~ 07. 24'}},
-      {name:'제7회 GTQ/GTQi',date:'2026-07-25',cols:{시험일:'07. 25 (토)',온라인원서접수:'06. 24 ~ 07. 01',방문접수:'07. 01',수험표공고:'07. 16 ~ 07. 25',성적공고:'08. 14 ~ 08. 21'}},
-      {name:'제8회 GTQ/GTQi',date:'2026-08-22',cols:{시험일:'08. 22 (토)',온라인원서접수:'07. 22 ~ 07. 29',방문접수:'07. 29',수험표공고:'08. 13 ~ 08. 22',성적공고:'09. 11 ~ 09. 18'}},
-      {name:'제9회 GTQ/GTQi/GTQid',date:'2026-09-19',cols:{시험일:'09. 19 (토)',온라인원서접수:'08. 19 ~ 08. 26',방문접수:'08. 26',수험표공고:'09. 10 ~ 09. 19',성적공고:'10. 16 ~ 10. 23'}},
-      {name:'제10회 GTQ/GTQi',date:'2026-10-24',cols:{시험일:'10. 24 (토)',온라인원서접수:'09. 23 ~ 09. 30',방문접수:'09. 30',수험표공고:'10. 15 ~ 10. 24',성적공고:'11. 13 ~ 11. 20'}},
-      {name:'제11회 GTQ/GTQi/GTQid',date:'2026-11-28',cols:{시험일:'11. 28 (토)',온라인원서접수:'10. 28 ~ 11. 04',방문접수:'11. 04',수험표공고:'11. 19 ~ 11. 28',성적공고:'12. 28 ~ 01. 04'}},
-      {name:'제12회 GTQ/GTQi',date:'2026-12-19',cols:{시험일:'12. 19 (토)',온라인원서접수:'11. 18 ~ 11. 25',방문접수:'11. 25',수험표공고:'12. 10 ~ 12. 19',성적공고:'01. 08 ~ 01. 15'}},
+      {name:'제2회 GTQ/GTQi',examDate:'2026-02-28',cols:{시험일:'02. 28 (토)',온라인원서접수:'01. 28 ~ 02. 04',방문접수:'02. 04',수험표공고:'02. 19 ~ 02. 28',성적공고:'03. 20 ~ 03. 27'}},
+      {name:'제3회 GTQ/GTQi',examDate:'2026-03-28',cols:{시험일:'03. 28 (토)',온라인원서접수:'02. 25 ~ 03. 04',방문접수:'03. 04',수험표공고:'03. 19 ~ 03. 28',성적공고:'04. 17 ~ 04. 24'}},
+      {name:'제4회 GTQ/GTQi',examDate:'2026-04-25',cols:{시험일:'04. 25 (토)',온라인원서접수:'03. 25 ~ 04. 01',방문접수:'04. 01',수험표공고:'04. 16 ~ 04. 25',성적공고:'05. 15 ~ 05. 22'}},
+      {name:'제5회 GTQ/GTQi/GTQid',examDate:'2026-05-30',cols:{시험일:'05. 30 (토)',온라인원서접수:'04. 29 ~ 05. 06',방문접수:'05. 06',수험표공고:'05. 21 ~ 05. 30',성적공고:'06. 26 ~ 07. 03'}},
+      {name:'제6회 GTQ/GTQi',examDate:'2026-06-27',cols:{시험일:'06. 27 (토)',온라인원서접수:'05. 27 ~ 06. 04',방문접수:'06. 04',수험표공고:'06. 18 ~ 06. 27',성적공고:'07. 17 ~ 07. 24'}},
+      {name:'제7회 GTQ/GTQi',examDate:'2026-07-25',cols:{시험일:'07. 25 (토)',온라인원서접수:'06. 24 ~ 07. 01',방문접수:'07. 01',수험표공고:'07. 16 ~ 07. 25',성적공고:'08. 14 ~ 08. 21'}},
+      {name:'제8회 GTQ/GTQi',examDate:'2026-08-22',cols:{시험일:'08. 22 (토)',온라인원서접수:'07. 22 ~ 07. 29',방문접수:'07. 29',수험표공고:'08. 13 ~ 08. 22',성적공고:'09. 11 ~ 09. 18'}},
+      {name:'제9회 GTQ/GTQi/GTQid',examDate:'2026-09-19',cols:{시험일:'09. 19 (토)',온라인원서접수:'08. 19 ~ 08. 26',방문접수:'08. 26',수험표공고:'09. 10 ~ 09. 19',성적공고:'10. 16 ~ 10. 23'}},
+      {name:'제10회 GTQ/GTQi',examDate:'2026-10-24',cols:{시험일:'10. 24 (토)',온라인원서접수:'09. 23 ~ 09. 30',방문접수:'09. 30',수험표공고:'10. 15 ~ 10. 24',성적공고:'11. 13 ~ 11. 20'}},
+      {name:'제11회 GTQ/GTQi/GTQid',examDate:'2026-11-28',cols:{시험일:'11. 28 (토)',온라인원서접수:'10. 28 ~ 11. 04',방문접수:'11. 04',수험표공고:'11. 19 ~ 11. 28',성적공고:'12. 28 ~ 01. 04'}},
+      {name:'제12회 GTQ/GTQi',examDate:'2026-12-19',cols:{시험일:'12. 19 (토)',온라인원서접수:'11. 18 ~ 11. 25',방문접수:'11. 25',수험표공고:'12. 10 ~ 12. 19',성적공고:'01. 08 ~ 01. 15'}},
     ],
     sessions:[
       {name:'GTQ 1·2급',time:'오전 10:00',subj:'포토샵 (Photoshop CC)'},
@@ -1490,13 +1510,14 @@ const TABS = {
     count:'매월 2회',
     type:'mos',
     months:[
-      {month:'5월',sessions:[
-        {date:'05월 09일 (토)',time:'09:20 ~ 10:20'},
-        {date:'05월 09일 (토)',time:'10:30 ~ 11:30'},
-        {date:'05월 23일 (토)',time:'09:20 ~ 10:20'},
-        {date:'05월 23일 (토)',time:'10:30 ~ 11:30'},
+      {month:'5월',rows:[
+        {examDate:'2026-05-09',date:'05월 09일 (토)',time:'09:20 ~ 10:20'},
+        {examDate:'2026-05-09',date:'05월 09일 (토)',time:'10:30 ~ 11:30'},
+        {examDate:'2026-05-23',date:'05월 23일 (토)',time:'09:20 ~ 10:20'},
+        {examDate:'2026-05-23',date:'05월 23일 (토)',time:'10:30 ~ 11:30'},
       ]},
     ],
+    upcomingMonths:['6월','7월','8월','9월','10월','11월','12월'],
     note:'* 매달 일정이 공개되는 대로 순차 업데이트됩니다.\n* MOS·ACP 시험은 본 학원에서 직접 응시 가능합니다. 접수 및 문의는 학원으로 연락 주세요.',
     site:'https://mos.or.kr',siteName:'MOS 공식 홈페이지 바로가기',
   },
@@ -1505,79 +1526,87 @@ const TABS = {
     info:'주관: 한국생산성본부(KPC) | 연 12회 시행 (매월 둘째 주 토요일) | KPC자격지역센터 방문접수 가능',
     count:'연 12회',
     rows:[
-      {name:'제1회차',date:'2026-01-10',cols:{시험일:'01. 10 (토)',원서접수:'12. 04 ~ 12. 10',합격자발표:'01. 29 ~ 02. 05'}},
-      {name:'제2회차',date:'2026-02-07',cols:{시험일:'02. 07 (토)',원서접수:'01. 01 ~ 01. 07',합격자발표:'02. 26 ~ 03. 05'}},
-      {name:'제3회차',date:'2026-03-14',cols:{시험일:'03. 14 (토)',원서접수:'02. 05 ~ 02. 11',합격자발표:'04. 02 ~ 04. 09'}},
-      {name:'제4회차',date:'2026-04-11',cols:{시험일:'04. 11 (토)',원서접수:'03. 05 ~ 03. 11',합격자발표:'04. 30 ~ 05. 07'}},
-      {name:'제5회차',date:'2026-05-09',cols:{시험일:'05. 09 (토)',원서접수:'04. 02 ~ 04. 08',합격자발표:'05. 28 ~ 06. 04'}},
-      {name:'제6회차',date:'2026-06-13',cols:{시험일:'06. 13 (토)',원서접수:'05. 07 ~ 05. 13',합격자발표:'07. 02 ~ 07. 09'}},
-      {name:'제7회차',date:'2026-07-11',cols:{시험일:'07. 11 (토)',원서접수:'06. 04 ~ 06. 10',합격자발표:'07. 30 ~ 08. 06'}},
-      {name:'제8회차',date:'2026-08-08',cols:{시험일:'08. 08 (토)',원서접수:'07. 02 ~ 07. 08',합격자발표:'08. 27 ~ 09. 03'}},
-      {name:'제9회차',date:'2026-09-12',cols:{시험일:'09. 12 (토)',원서접수:'08. 06 ~ 08. 12',합격자발표:'10. 01 ~ 10. 08'}},
-      {name:'제10회차',date:'2026-10-17',cols:{시험일:'10. 17 (토)',원서접수:'09. 10 ~ 09. 16',합격자발표:'11. 05 ~ 11. 12'}},
-      {name:'제11회차',date:'2026-11-14',cols:{시험일:'11. 14 (토)',원서접수:'10. 08 ~ 10. 14',합격자발표:'12. 03 ~ 12. 10'}},
-      {name:'제12회차',date:'2026-12-12',cols:{시험일:'12. 12 (토)',원서접수:'11. 05 ~ 11. 11',합격자발표:'12. 31 ~ 01. 07'}},
+      {name:'제1회차', examDate:'2026-01-10',cols:{시험일:'01. 10 (토)',원서접수:'12. 04 ~ 12. 10',합격자발표:'01. 29 ~ 02. 05'}},
+      {name:'제2회차', examDate:'2026-02-07',cols:{시험일:'02. 07 (토)',원서접수:'01. 01 ~ 01. 07',합격자발표:'02. 26 ~ 03. 05'}},
+      {name:'제3회차', examDate:'2026-03-14',cols:{시험일:'03. 14 (토)',원서접수:'02. 05 ~ 02. 11',합격자발표:'04. 02 ~ 04. 09'}},
+      {name:'제4회차', examDate:'2026-04-11',cols:{시험일:'04. 11 (토)',원서접수:'03. 05 ~ 03. 11',합격자발표:'04. 30 ~ 05. 07'}},
+      {name:'제5회차', examDate:'2026-05-09',cols:{시험일:'05. 09 (토)',원서접수:'04. 02 ~ 04. 08',합격자발표:'05. 28 ~ 06. 04'}},
+      {name:'제6회차', examDate:'2026-06-13',cols:{시험일:'06. 13 (토)',원서접수:'05. 07 ~ 05. 13',합격자발표:'07. 02 ~ 07. 09'}},
+      {name:'제7회차', examDate:'2026-07-11',cols:{시험일:'07. 11 (토)',원서접수:'06. 04 ~ 06. 10',합격자발표:'07. 30 ~ 08. 06'}},
+      {name:'제8회차', examDate:'2026-08-08',cols:{시험일:'08. 08 (토)',원서접수:'07. 02 ~ 07. 08',합격자발표:'08. 27 ~ 09. 03'}},
+      {name:'제9회차', examDate:'2026-09-12',cols:{시험일:'09. 12 (토)',원서접수:'08. 06 ~ 08. 12',합격자발표:'10. 01 ~ 10. 08'}},
+      {name:'제10회차',examDate:'2026-10-17',cols:{시험일:'10. 17 (토)',원서접수:'09. 10 ~ 09. 16',합격자발표:'11. 05 ~ 11. 12'}},
+      {name:'제11회차',examDate:'2026-11-14',cols:{시험일:'11. 14 (토)',원서접수:'10. 08 ~ 10. 14',합격자발표:'12. 03 ~ 12. 10'}},
+      {name:'제12회차',examDate:'2026-12-12',cols:{시험일:'12. 12 (토)',원서접수:'11. 05 ~ 11. 11',합격자발표:'12. 31 ~ 01. 07'}},
     ],
-    sessions:[
-      {name:'오전',time:'지정 시간',subj:'종목별 시험 시간 상이'},
-    ],
+    sessions:[{name:'오전',time:'지정 시간',subj:'종목별 시험 시간 상이'}],
     note:'※ CAT 정기시험은 매월 둘째 주 토요일에 시행 (연 12회)\n※ 시험 방문접수는 KPC자격지역센터에서 가능합니다. 지역센터는 사전 연락 후 내방을 권장드립니다.',
     site:'https://www.kpc.or.kr/index.do',siteName:'KPC 자격시험 바로가기',
   },
 };
 
 function renderMOS(d){
+  const ac = d.accentColor;
   const monthsHtml = d.months.map(m=>{
-    const rows = m.sessions.map(s=>{
-      const dateStr = '2026-'+s.date.replace('월 ','').replace('일 (토)','').replace('05','05').trim();
-      const isDate = s.date.includes('09일') ? '2026-05-09' : '2026-05-23';
-      const diff = Math.round((new Date(isDate)-TODAY)/(1000*60*60*24));
-      const highlight = diff>=0 && diff<=30;
-      return `<tr>
-        <td class="exam-d">
-          <span class="mos-date-badge" style="${highlight ? 'background:#EF9F2722;color:#854F0B' : ''}">${s.date}</span>
+    // 가장 가까운 날짜 찾기
+    let nearDate = null, nearDiff = Infinity;
+    m.rows.forEach(r=>{ const df=diffDays(r.examDate); if(df>=0&&df<nearDiff){nearDiff=df;nearDate=r.examDate;} });
+
+    const trs = m.rows.map(r=>{
+      const df = diffDays(r.examDate);
+      const dd = getDdayInfo(df);
+      const isNearest = r.examDate === nearDate && nearDate !== null;
+      const hlStyle = isNearest ? `background:${ac}18;` : '';
+      const dateStyle = isNearest ? `background:${ac}22;color:${ac};padding:1px 7px;border-radius:5px;font-weight:600;` : 'font-weight:500';
+      return `<tr style="${hlStyle}">
+        <td class="mos-date-cell" style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)">
+          <span style="${dateStyle}">${r.date}</span>
+          ${isNearest?`<span style="margin-left:6px;font-size:10px;font-weight:600;padding:2px 6px;border-radius:99px;background:${ac};color:#fff">가장 가까운 시험</span>`:''}
         </td>
-        <td>${s.time}</td>
+        <td class="mos-time-cell" style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)">${r.time}</td>
+        <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)"><span class="c-dday ${dd.cls}">${dd.text}</span></td>
       </tr>`;
     }).join('');
-    return `<div style="margin-bottom:1rem">
-      <div style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.5rem;display:flex;align-items:center;gap:8px">
-        ${m.month} 시험 일정
-        <span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px;background:#B5D4F4;color:#0C447C">공개됨</span>
-      </div>
-      <div style="border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden">
-        <table class="mos-table" style="width:100%;border-collapse:collapse">
-          <thead><tr style="background:var(--color-background-secondary)"><th style="padding:8px 14px;font-size:11px;color:var(--color-text-tertiary);font-weight:500;border-bottom:0.5px solid var(--color-border-tertiary)">시험일정</th><th style="padding:8px 14px;font-size:11px;color:var(--color-text-tertiary);font-weight:500;border-bottom:0.5px solid var(--color-border-tertiary)">시험시간</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>
+
+    return `<div class="mos-month-title">${m.month} 시험 일정
+      <span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px;background:${d.numBg};color:${d.numColor}">공개됨</span>
+    </div>
+    <div class="mos-tbl-wrap">
+      <table class="mos-tbl">
+        <thead><tr><th>시험일정</th><th>시험시간</th><th>D-day</th></tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
     </div>`;
   }).join('');
 
-  const upcoming = ['6월','7월','8월','9월','10월','11월','12월'].map(m=>`
-    <div class="c-row" style="padding:9px 0">
-      <div style="width:26px;height:26px;border-radius:50%;background:var(--color-background-secondary);flex-shrink:0"></div>
-      <div class="c-info"><div class="c-info-name" style="color:var(--color-text-tertiary)">${m} 일정</div></div>
-      <span class="c-dday dday-future">업데이트 예정</span>
-    </div>`).join('');
+  const upcomingRows = d.upcomingMonths.map(m=>`
+    <tr>
+      <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)">${m} 일정</td>
+      <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)">업데이트 예정</td>
+      <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)"><span class="c-dday dday-future">—</span></td>
+    </tr>`).join('');
 
   return `
-    <div class="info-bar"><i class="ti ti-building" aria-hidden="true"></i>${d.info}</div>
+    <div class="info-bar"><i class="ti ti-info-circle" aria-hidden="true"></i>${d.info}</div>
     <div class="mos-box">
-      <div class="mos-box-title"><i class="ti ti-school" style="color:#185FA5" aria-hidden="true"></i>본 학원 직접 응시 안내</div>
+      <div class="mos-box-title"><i class="ti ti-school" style="color:${ac}" aria-hidden="true"></i>본 학원 직접 응시 안내</div>
       <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.7">MOS · ACP 시험은 별도 외부 시험장 이동 없이 <strong style="font-weight:500;color:var(--color-text-primary)">본 학원에서 직접 응시</strong>하실 수 있습니다.<br>시험 접수 및 일정 문의는 학원 담당자에게 문의해 주세요.</div>
     </div>
     <div class="sec-label">월별 시험 일정</div>
     ${monthsHtml}
-    <div style="font-size:13px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:.5rem;display:flex;align-items:center;gap:8px">
-      이후 월 일정
+    <div class="mos-month-title" style="margin-top:1rem">이후 월 일정
       <span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px;background:var(--color-background-secondary);color:var(--color-text-tertiary)">업데이트 예정</span>
     </div>
-    <div class="c-list" style="margin-bottom:1rem">${upcoming}</div>
-    <div style="font-size:12px;color:var(--color-text-tertiary);display:flex;align-items:center;gap:6px;margin-bottom:1.25rem">
+    <div class="mos-tbl-wrap">
+      <table class="mos-tbl">
+        <thead><tr><th>시험일정</th><th>시험시간</th><th>D-day</th></tr></thead>
+        <tbody>${upcomingRows}</tbody>
+      </table>
+    </div>
+    <div style="font-size:12px;color:var(--color-text-tertiary);display:flex;align-items:center;gap:6px;margin:0.75rem 0 1.25rem">
       <i class="ti ti-refresh" aria-hidden="true"></i>일정이 공개되는 대로 순차적으로 업데이트됩니다.
     </div>
-    ${d.note ? `<div class="note-box">${d.note.replace(/\n/g,'<br>')}</div>` : ''}
+    ${d.note?`<div class="note-box">${d.note.replace(/\n/g,'<br>')}</div>`:''}
     <a class="site-btn" href="${d.site}" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>${d.siteName}</a>
   `;
 }
@@ -1589,7 +1618,7 @@ function renderNormal(d){
       <span class="session-time">${s.time}</span>
       <span class="session-subj">${s.subj}</span>
     </div>`).join('');
-  const noteHtml = d.note ? `<div class="sec-label">비고</div><div class="note-box">${d.note.replace(/\n/g,'<br>')}</div>` : '';
+  const noteHtml = d.note?`<div class="sec-label">비고</div><div class="note-box">${d.note.replace(/\n/g,'<br>')}</div>`:'';
   return `
     <div class="info-bar"><i class="ti ti-info-circle" aria-hidden="true"></i>${d.info}</div>
     <div class="sec-label">시험 일정</div>
@@ -1611,21 +1640,22 @@ function render(key){
   sub.style.background = d.numBg;
   sub.style.color = d.numColor;
   document.querySelectorAll('.c-utab').forEach(b=>{
-    const on = b.dataset.tab === key;
-    b.classList.toggle('on', on);
+    const on = b.dataset.tab===key;
+    b.classList.toggle('on',on);
     b.style.color = on ? d.color : '';
   });
   document.getElementById('body').innerHTML = d.type==='mos' ? renderMOS(d) : renderNormal(d);
 }
 
 document.getElementById('tabs').addEventListener('click',e=>{
-  const btn = e.target.closest('.c-utab');
+  const btn=e.target.closest('.c-utab');
   if(!btn) return;
   render(btn.dataset.tab);
 });
 
 render('전산세무회계');
 </script>
+
 
   </div>
 </div>
@@ -1880,72 +1910,110 @@ const programs = [
 })();
 
 
-function openModal(id) {
-  var el = document.getElementById(id);
-  el.style.display = 'flex';
+
+function openMaterialLightbox(src) {
+  let overlay = document.getElementById('lb-overlay');
+  let img = document.getElementById('lb-img');
+
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'lb-overlay';
+    overlay.style.cssText = `
+      display:none;position:fixed;inset:0;z-index:20000;
+      background:rgba(0,0,0,0.82);
+      align-items:center;justify-content:center;
+      cursor:zoom-out;padding:20px;
+    `;
+
+    img = document.createElement('img');
+    img.id = 'lb-img';
+    img.style.cssText = `
+      max-width:92vw;max-height:92vh;
+      object-fit:contain;border-radius:12px;
+      box-shadow:0 24px 60px rgba(0,0,0,.5);
+      background:#fff;
+    `;
+
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener('click', function() {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+  }
+
+  img.src = src;
+  overlay.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
+
+function openModal(id) {
+  var el = document.getElementById(id);
+
+  // 기존 확대 모달이 있으면 기존 방식 사용
+  if (el) {
+    el.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    return;
+  }
+
+  // 모달이 없는 교재 카드들은 카드 안의 이미지 자체를 확대
+  var trigger = document.querySelector("[onclick=\"openModal('" + id + "')\"]");
+  if (trigger) {
+    var img = trigger.querySelector('img[src]');
+    if (img) {
+      openMaterialLightbox(img.src);
+      return;
+    }
+  }
+}
+
 function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
+  var el = document.getElementById(id);
+  if (el) {
+    el.style.display = 'none';
+  }
+  var lb = document.getElementById('lb-overlay');
+  if (lb) {
+    lb.style.display = 'none';
+  }
   document.body.style.overflow = '';
 }
+
 document.addEventListener('keydown', function(e){
   if(e.key==='Escape'){
     document.querySelectorAll('[id^="modal-"]').forEach(function(m){
       m.style.display='none';
     });
+    var lb = document.getElementById('lb-overlay');
+    if (lb) lb.style.display='none';
     document.body.style.overflow='';
   }
 });
 
 /* ── LIGHTBOX ── */
 (function initLightbox() {
-  // 오버레이 생성
-  const overlay = document.createElement('div');
-  overlay.id = 'lb-overlay';
-  overlay.style.cssText = `
-    display:none;position:fixed;inset:0;z-index:9999;
-    background:rgba(0,0,0,0.82);
-    display:none;align-items:center;justify-content:center;
-    cursor:zoom-out;
-  `;
-  const img = document.createElement('img');
-  img.id = 'lb-img';
-  img.style.cssText = `
-    max-width:88vw;max-height:88vh;
-    object-fit:contain;border-radius:12px;
-    box-shadow:0 24px 60px rgba(0,0,0,.5);
-    transition:transform .15s;
-  `;
-  overlay.appendChild(img);
-  document.body.appendChild(overlay);
-
-  // 교재 이미지에 클릭 이벤트
   function bindImages() {
-    document.querySelectorAll('#page-materials img[src]').forEach(el => {
+    document.querySelectorAll('#page-materials img[src]').forEach(function(el) {
+      if (el.dataset.lightboxBound === '1') return;
+      el.dataset.lightboxBound = '1';
       el.style.cursor = 'zoom-in';
       el.addEventListener('click', function(e) {
+        e.preventDefault();
         e.stopPropagation();
-        img.src = this.src;
-        overlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        openMaterialLightbox(this.src);
       });
     });
   }
-  bindImages();
 
-  // 닫기
-  overlay.addEventListener('click', function() {
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      overlay.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindImages);
+  } else {
+    bindImages();
+  }
 })();
+
 </script>
 <div id="modal-balsang" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:1rem;" onclick="closeModal('modal-balsang')">
   <div style="background:var(--surface);border-radius:var(--radius-xl);max-width:600px;width:100%;max-height:90vh;overflow-y:auto;" onclick="event.stopPropagation()">
