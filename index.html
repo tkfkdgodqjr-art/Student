@@ -1516,8 +1516,8 @@ function setSsTab(tab, btn) {
         처음으로
       </button>
     </div>
-
-
+ 
+ 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 .wrap{padding:1rem 0 2rem}
@@ -1570,7 +1570,7 @@ function setSsTab(tab, btn) {
 .site-btn:hover{background:var(--color-background-secondary)}
 .site-btn i{font-size:15px}
 </style>
-
+ 
 <div class="wrap">
   <div class="outer">
     <div class="c-header" id="hdr">
@@ -1589,14 +1589,18 @@ function setSsTab(tab, btn) {
     <div class="c-body" id="body"></div>
   </div>
 </div>
-
+ 
 <script>
-const TODAY = new Date('2026-05-11');
-
-// 날짜 파싱 (2026-MM-DD)
-function parseDate(s){ return new Date(s); }
+const TODAY = new Date();
+TODAY.setHours(0, 0, 0, 0);
+ 
+// 날짜 파싱 (YYYY-MM-DD)
+function parseDate(s){
+  const [y, m, d] = s.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
 function diffDays(d){ return Math.round((parseDate(d)-TODAY)/(86400000)); }
-
+ 
 function getDdayInfo(diff){
   if(diff < 0)  return {text:'종료',cls:'dday-past'};
   if(diff === 0) return {text:'D-Day',cls:'dday-soon'};
@@ -1604,7 +1608,7 @@ function getDdayInfo(diff){
   if(diff <= 60) return {text:'D-'+diff,cls:'dday-near'};
   return {text:'D-'+diff,cls:'dday-future'};
 }
-
+ 
 // 각 탭의 rows에서 실기시험 기준 가장 가까운 미래 index 찾기
 function findNearest(rows){
   let nearIdx = -1, nearDiff = Infinity;
@@ -1614,14 +1618,14 @@ function findNearest(rows){
   });
   return nearIdx;
 }
-
+ 
 function renderRows(rows, numBg, numColor, accentColor){
   const nearIdx = findNearest(rows);
   return rows.map((r,i)=>{
     const diff = diffDays(r.examDate);
     const dd = getDdayInfo(diff);
     const isNearest = i === nearIdx;
-
+ 
     // 각 col 렌더
     const colLines = Object.entries(r.cols).map(([k,v])=>{
       if(k==='시험일'){
@@ -1629,14 +1633,14 @@ function renderRows(rows, numBg, numColor, accentColor){
       }
       return `<span style="color:var(--color-text-tertiary)">${k}</span> ${v.replace(/\n/g,'<br>')}`;
     }).join(' &nbsp;·&nbsp; ');
-
+ 
     const nearestStyle = isNearest
       ? `background:${accentColor}12;border:1px solid ${accentColor}44;`
       : '';
     const nearestTag = isNearest
       ? `<span class="nearest-tag" style="background:${accentColor};color:#fff">가장 가까운 시험</span>`
       : '';
-
+ 
     return `<div class="c-row${isNearest?' nearest':''}" style="${nearestStyle}">
       <div class="c-num" style="background:${numBg};color:${numColor}">${i+1}</div>
       <div class="c-info">
@@ -1647,7 +1651,7 @@ function renderRows(rows, numBg, numColor, accentColor){
     </div>`;
   }).join('');
 }
-
+ 
 const TABS = {
   전산세무회계:{
     color:'#3B6D11',bgColor:'#EAF3DE',numBg:'#C0DD97',numColor:'#27500A',accentColor:'#3B6D11',
@@ -1733,16 +1737,14 @@ const TABS = {
     count:'매월 2회',
     type:'mos',
     months:[
-      {month:'5월',rows:[
-        {examDate:'2026-05-09',date:'05월 09일 (토)',time:'09:20 ~ 10:20'},
-        {examDate:'2026-05-09',date:'05월 09일 (토)',time:'10:30 ~ 11:30'},
-        {examDate:'2026-05-23',date:'05월 23일 (토)',time:'09:20 ~ 10:20'},
-        {examDate:'2026-05-23',date:'05월 23일 (토)',time:'10:30 ~ 11:30'},
+      {month:'6월',rows:[
+        {examDate:'2026-06-20',date:'06월 20일 (토)',time:'09:20 ~ 10:20'},
+        {examDate:'2026-06-20',date:'06월 20일 (토)',time:'10:30 ~ 11:30'},
       ]},
     ],
-    upcomingMonths:['6월','7월','8월','9월','10월','11월','12월'],
+    upcomingMonths:['7월','8월','9월','10월','11월','12월'],
     note:'* 매달 일정이 공개되는 대로 순차 업데이트됩니다.\n* MOS·ACP 시험은 본 학원에서 직접 응시 가능합니다. 접수 및 문의는 학원으로 연락 주세요.',
-    site:'https://mos.or.kr',siteName:'MOS 공식 홈페이지 바로가기',
+    site:'https://www.ybmit.com/test_rec/grp_rec_main.jsp?UnivCode=IKG117&UnivGubun=G&chk=null',siteName:'MOS 시험 접수하기',
   },
   CAT:{
     color:'#3C3489',bgColor:'#EEEDFE',numBg:'#CECBF6',numColor:'#3C3489',accentColor:'#534AB7',
@@ -1767,14 +1769,14 @@ const TABS = {
     site:'https://www.kpc.or.kr/index.do',siteName:'KPC 자격시험 바로가기',
   },
 };
-
+ 
 function renderMOS(d){
   const ac = d.accentColor;
   const monthsHtml = d.months.map(m=>{
     // 가장 가까운 날짜 찾기
     let nearDate = null, nearDiff = Infinity;
     m.rows.forEach(r=>{ const df=diffDays(r.examDate); if(df>=0&&df<nearDiff){nearDiff=df;nearDate=r.examDate;} });
-
+ 
     const trs = m.rows.map(r=>{
       const df = diffDays(r.examDate);
       const dd = getDdayInfo(df);
@@ -1790,7 +1792,7 @@ function renderMOS(d){
         <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)"><span class="c-dday ${dd.cls}">${dd.text}</span></td>
       </tr>`;
     }).join('');
-
+ 
     return `<div class="mos-month-title">${m.month} 시험 일정
       <span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px;background:${d.numBg};color:${d.numColor}">공개됨</span>
     </div>
@@ -1801,14 +1803,14 @@ function renderMOS(d){
       </table>
     </div>`;
   }).join('');
-
+ 
   const upcomingRows = d.upcomingMonths.map(m=>`
     <tr>
       <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)">${m} 일정</td>
       <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)">업데이트 예정</td>
       <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)"><span class="c-dday dday-future">—</span></td>
     </tr>`).join('');
-
+ 
   return `
     <div class="info-bar"><i class="ti ti-info-circle" aria-hidden="true"></i>${d.info}</div>
     <div class="mos-box">
@@ -1833,7 +1835,7 @@ function renderMOS(d){
     <a class="site-btn" href="${d.site}" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>${d.siteName}</a>
   `;
 }
-
+ 
 function renderNormal(d){
   const sessions = d.sessions.map(s=>`
     <div class="session-row">
@@ -1852,7 +1854,7 @@ function renderNormal(d){
     <a class="site-btn" href="${d.site}" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>${d.siteName}</a>
   `;
 }
-
+ 
 function render(key){
   const d = TABS[key];
   document.getElementById('hdr').style.background = d.bgColor;
@@ -1869,16 +1871,15 @@ function render(key){
   });
   document.getElementById('body').innerHTML = d.type==='mos' ? renderMOS(d) : renderNormal(d);
 }
-
+ 
 document.getElementById('tabs').addEventListener('click',e=>{
   const btn=e.target.closest('.c-utab');
   if(!btn) return;
   render(btn.dataset.tab);
 });
-
+ 
 render('전산세무회계');
 </script>
-
 
   </div>
 </div>
