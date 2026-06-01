@@ -1255,6 +1255,14 @@
   <p style="font-size:12px;color:#633806;line-height:1.6;margin:0">특강·세미나 일정으로 100% 정확하지 않을 수 있습니다. 수강생분들을 위해 최대한 자습 가능한 시간을 찾아 작성했으니 양해 부탁드립니다.</p>
 </div>
 
+<!-- 날짜 카테고리 -->
+<div class="tab-pills ss-date-tabs" style="margin-bottom:1rem">
+  <button class="tab-pill active" onclick="setSsDate('0513',this)">05.13~06.10</button>
+  <button class="tab-pill" onclick="setSsDate('0611',this)">06.11~07.13</button>
+</div>
+
+<!-- ── 05.13~06.10 ── -->
+<div id="ss-date-0513" class="ss-date-panel">
 <!-- 범례 -->
 <div style="display:flex;gap:16px;margin-bottom:1.25rem;flex-wrap:wrap;align-items:center">
   <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-secondary)">
@@ -1267,12 +1275,12 @@
 
 <!-- 평일/주말 탭 -->
 <div class="tab-pills" style="margin-bottom:1.25rem">
-  <button class="tab-pill active" onclick="setSsTab('weekday',this)">📅 평일 (월~금)</button>
-  <button class="tab-pill" onclick="setSsTab('weekend',this)">🗓️ 주말 (토~일)</button>
+  <button class="tab-pill active" onclick="setSsTabDate('0513','weekday',this)">📅 평일 (월~금)</button>
+  <button class="tab-pill" onclick="setSsTabDate('0513','weekend',this)">🗓️ 주말 (토~일)</button>
 </div>
 
 <!-- ── 평일 시간표 ── -->
-<div id="ss-weekday">
+<div id="ss-weekday-0513">
 <div style="border-radius:18px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;margin-bottom:1.25rem">
   <table style="width:100%;border-collapse:collapse;table-layout:fixed;min-width:620px;font-size:12px;font-family:inherit">
     <thead>
@@ -1420,10 +1428,10 @@
   자습 가능한 시간에 자유롭게 이용 가능합니다.<br>
   강의 진행 중에는 자습이 불가할 수 있습니다.
 </div>
-</div><!-- /ss-weekday -->
+</div><!-- /ss-weekday-0513 -->
 
 <!-- ── 주말 시간표 ── -->
-<div id="ss-weekend" style="display:none">
+<div id="ss-weekend-0513" style="display:none">
 
 <div style="border-radius:18px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;margin-bottom:1.25rem">
   <table style="width:100%;border-collapse:collapse;table-layout:fixed;min-width:620px;font-size:12px;font-family:inherit">
@@ -1488,18 +1496,279 @@
   18:00 이후에는 전 강의실 자습이 불가합니다.<br>
   G강의실은 5월 24일(토)부터 주말 15:00~18:00 자습 가능합니다.
 </div>
-</div><!-- /ss-weekend -->
+</div><!-- /ss-weekend-0513 -->
+</div><!-- /ss-date-0513 -->
 
+<!-- ── 06.11~07.13 ── -->
+<div id="ss-date-0611" class="ss-date-panel" style="display:none">
+
+<!-- 범례 -->
+<div style="display:flex;gap:16px;margin-bottom:1.25rem;flex-wrap:wrap;align-items:center">
+  <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-secondary)">
+    <div style="width:28px;height:16px;border-radius:4px;background:#FBEAF0;border:0.5px solid #ED93B1;flex-shrink:0"></div>자습 가능
+  </div>
+  <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-secondary)">
+    <div style="width:28px;height:16px;border-radius:4px;background:#f0efe9;border:0.5px solid #ccc9be;flex-shrink:0"></div>자습 불가
+  </div>
+</div>
+
+<!-- 평일/주말 탭 -->
+<div class="tab-pills" style="margin-bottom:1.25rem">
+  <button class="tab-pill active" onclick="setSsTabDate('0611','weekday',this)">📅 평일 (월~금)</button>
+  <button class="tab-pill" onclick="setSsTabDate('0611','weekend',this)">🗓️ 주말 (토~일)</button>
+</div>
+
+<!-- ── 평일 시간표 ── -->
+<div id="ss-weekday-0611">
+<div style="border-radius:18px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;margin-bottom:1.25rem">
+  <table style="width:100%;border-collapse:collapse;table-layout:fixed;min-width:620px;font-size:12px;font-family:inherit">
+    <thead>
+      <tr>
+        <th style="width:96px;text-align:left;padding:9px 6px 9px 12px;background:var(--surface2);color:var(--text-secondary);font-weight:500;border-bottom:1px solid var(--border2)">시간</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">A</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">B</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">C</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">D</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">E</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">F</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">G</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">H</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">09:00–11:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">11:00–13:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">13:00–14:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">14:00–16:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">화·목·금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">16:00–17:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월·수</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">17:00–18:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월·수</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">18:00–19:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월·수</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">월–금</span></td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">19:00 이후</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 이용 안내 -->
+<div class="notice-box">
+  <strong>📌 이용 안내</strong><br>
+  자습 가능한 시간에 자유롭게 이용 가능합니다.<br>
+  강의 진행 중에는 자습이 불가할 수 있습니다.<br>
+  19:00 이후에는 자습이 불가합니다.
+</div>
+</div>
+
+<!-- ── 주말 시간표 ── -->
+<div id="ss-weekend-0611" style="display:none">
+<div style="border-radius:18px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;margin-bottom:1.25rem">
+  <table style="width:100%;border-collapse:collapse;table-layout:fixed;min-width:620px;font-size:12px;font-family:inherit">
+    <thead>
+      <tr>
+        <th style="width:96px;text-align:left;padding:9px 6px 9px 12px;background:var(--surface2);color:var(--text-secondary);font-weight:500;border-bottom:1px solid var(--border2)">시간</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">A</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">B</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">C</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">D</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">E</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">F</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">G</th>
+        <th style="border-left:1px solid var(--border);background:var(--surface2);color:var(--text-primary);font-weight:600;font-size:13px;padding:9px 6px;border-bottom:1px solid var(--border2);text-align:center">H</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">09:00–12:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">12:00–13:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">13:00–15:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FFF8E1;"><span style="color:#8a6000;font-size:10px;font-weight:600;line-height:1.4;white-space:nowrap;">6/19까지<br>토·일</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">15:00–18:00</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FBEAF0;color:#72243E;font-weight:600;"><span style="color:#72243E;font-size:11px;font-weight:500;line-height:1.35;white-space:nowrap;">토·일</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border);background:#FFF8E1;"><span style="color:#8a6000;font-size:10px;font-weight:600;line-height:1.4;white-space:nowrap;">6/19까지<br>토·일</span></td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;font-weight:500;color:var(--text-secondary);padding:8px 6px 8px 12px;white-space:nowrap;background:var(--surface2);border-right:1px solid var(--border)">18:00 이후</td>
+        <td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+<td style="padding:5px 4px;text-align:center;border-left:1px solid var(--border)"><span style="display:inline-block;background:#f0efe9;color:#9a9890;font-size:11px;border-radius:5px;padding:3px 6px;line-height:1.35">불가</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 이용 안내 -->
+<div class="notice-box">
+  <strong>📌 주말 이용 안내</strong><br>
+  토/일은 강의 일정이 다릅니다. 자습 가능 시간을 반드시 확인하세요.<br>
+  H강의실은 2026.06.19까지 09:00~18:00 자습 가능하며, 2026.06.20부터는 09:00~13:00 자습 가능합니다.<br>
+  18:00 이후에는 전 강의실 자습이 불가합니다.
+</div>
+</div>
+
+</div><!-- /ss-date-0611 -->
+
+<!-- 자습실 날짜/요일 탭 스크립트 -->
 <script>
-function setSsTab(tab, btn) {
-  document.querySelectorAll('#page-selfstudy .tab-pill').forEach(b => b.classList.remove('active'));
+function setSsDate(date, btn) {
+  const root = document.getElementById('page-selfstudy');
+
+  root.querySelectorAll('.ss-date-tabs .tab-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('ss-weekday').style.display = tab === 'weekday' ? '' : 'none';
-  document.getElementById('ss-weekend').style.display = tab === 'weekend' ? '' : 'none';
+
+  root.querySelectorAll('.ss-date-panel').forEach(panel => {
+    panel.style.display = 'none';
+  });
+
+  const activePanel = document.getElementById('ss-date-' + date);
+  if (activePanel) activePanel.style.display = '';
+
+  const firstTab = activePanel ? activePanel.querySelector('.tab-pills:not(.ss-date-tabs) .tab-pill') : null;
+  if (firstTab) {
+    activePanel.querySelectorAll('.tab-pills:not(.ss-date-tabs) .tab-pill').forEach(b => b.classList.remove('active'));
+    firstTab.classList.add('active');
+  }
+
+  const weekday = document.getElementById('ss-weekday-' + date);
+  const weekend = document.getElementById('ss-weekend-' + date);
+  if (weekday) weekday.style.display = '';
+  if (weekend) weekend.style.display = 'none';
+}
+
+function setSsTabDate(date, tab, btn) {
+  const panel = document.getElementById('ss-date-' + date);
+  if (!panel) return;
+
+  panel.querySelectorAll('.tab-pills:not(.ss-date-tabs) .tab-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const weekday = document.getElementById('ss-weekday-' + date);
+  const weekend = document.getElementById('ss-weekend-' + date);
+
+  if (weekday) weekday.style.display = tab === 'weekday' ? '' : 'none';
+  if (weekend) weekend.style.display = tab === 'weekend' ? '' : 'none';
 }
 </script>
 
-  </div>
+
+</div>
 </div>
 
 <!-- ══════════════ EXAM ══════════════ -->
@@ -1516,8 +1785,8 @@ function setSsTab(tab, btn) {
         처음으로
       </button>
     </div>
-
-
+ 
+ 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 .wrap{padding:1rem 0 2rem}
@@ -1570,7 +1839,7 @@ function setSsTab(tab, btn) {
 .site-btn:hover{background:var(--color-background-secondary)}
 .site-btn i{font-size:15px}
 </style>
-
+ 
 <div class="wrap">
   <div class="outer">
     <div class="c-header" id="hdr">
@@ -1589,14 +1858,18 @@ function setSsTab(tab, btn) {
     <div class="c-body" id="body"></div>
   </div>
 </div>
-
+ 
 <script>
-const TODAY = new Date('2026-05-11');
-
-// 날짜 파싱 (2026-MM-DD)
-function parseDate(s){ return new Date(s); }
+const TODAY = new Date();
+TODAY.setHours(0, 0, 0, 0);
+ 
+// 날짜 파싱 (YYYY-MM-DD)
+function parseDate(s){
+  const [y, m, d] = s.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
 function diffDays(d){ return Math.round((parseDate(d)-TODAY)/(86400000)); }
-
+ 
 function getDdayInfo(diff){
   if(diff < 0)  return {text:'종료',cls:'dday-past'};
   if(diff === 0) return {text:'D-Day',cls:'dday-soon'};
@@ -1604,7 +1877,7 @@ function getDdayInfo(diff){
   if(diff <= 60) return {text:'D-'+diff,cls:'dday-near'};
   return {text:'D-'+diff,cls:'dday-future'};
 }
-
+ 
 // 각 탭의 rows에서 실기시험 기준 가장 가까운 미래 index 찾기
 function findNearest(rows){
   let nearIdx = -1, nearDiff = Infinity;
@@ -1614,14 +1887,14 @@ function findNearest(rows){
   });
   return nearIdx;
 }
-
+ 
 function renderRows(rows, numBg, numColor, accentColor){
   const nearIdx = findNearest(rows);
   return rows.map((r,i)=>{
     const diff = diffDays(r.examDate);
     const dd = getDdayInfo(diff);
     const isNearest = i === nearIdx;
-
+ 
     // 각 col 렌더
     const colLines = Object.entries(r.cols).map(([k,v])=>{
       if(k==='시험일'){
@@ -1629,14 +1902,14 @@ function renderRows(rows, numBg, numColor, accentColor){
       }
       return `<span style="color:var(--color-text-tertiary)">${k}</span> ${v.replace(/\n/g,'<br>')}`;
     }).join(' &nbsp;·&nbsp; ');
-
+ 
     const nearestStyle = isNearest
       ? `background:${accentColor}12;border:1px solid ${accentColor}44;`
       : '';
     const nearestTag = isNearest
       ? `<span class="nearest-tag" style="background:${accentColor};color:#fff">가장 가까운 시험</span>`
       : '';
-
+ 
     return `<div class="c-row${isNearest?' nearest':''}" style="${nearestStyle}">
       <div class="c-num" style="background:${numBg};color:${numColor}">${i+1}</div>
       <div class="c-info">
@@ -1647,7 +1920,7 @@ function renderRows(rows, numBg, numColor, accentColor){
     </div>`;
   }).join('');
 }
-
+ 
 const TABS = {
   전산세무회계:{
     color:'#3B6D11',bgColor:'#EAF3DE',numBg:'#C0DD97',numColor:'#27500A',accentColor:'#3B6D11',
@@ -1733,16 +2006,14 @@ const TABS = {
     count:'매월 2회',
     type:'mos',
     months:[
-      {month:'5월',rows:[
-        {examDate:'2026-05-09',date:'05월 09일 (토)',time:'09:20 ~ 10:20'},
-        {examDate:'2026-05-09',date:'05월 09일 (토)',time:'10:30 ~ 11:30'},
-        {examDate:'2026-05-23',date:'05월 23일 (토)',time:'09:20 ~ 10:20'},
-        {examDate:'2026-05-23',date:'05월 23일 (토)',time:'10:30 ~ 11:30'},
+      {month:'6월',rows:[
+        {examDate:'2026-06-20',date:'06월 20일 (토)',time:'09:20 ~ 10:20'},
+        {examDate:'2026-06-20',date:'06월 20일 (토)',time:'10:30 ~ 11:30'},
       ]},
     ],
-    upcomingMonths:['6월','7월','8월','9월','10월','11월','12월'],
+    upcomingMonths:['7월','8월','9월','10월','11월','12월'],
     note:'* 매달 일정이 공개되는 대로 순차 업데이트됩니다.\n* MOS·ACP 시험은 본 학원에서 직접 응시 가능합니다. 접수 및 문의는 학원으로 연락 주세요.',
-    site:'https://mos.or.kr',siteName:'MOS 공식 홈페이지 바로가기',
+    site:'https://www.ybmit.com/test_rec/grp_rec_main.jsp?UnivCode=IKG117&UnivGubun=G&chk=null',siteName:'MOS 시험 접수하기',
   },
   CAT:{
     color:'#3C3489',bgColor:'#EEEDFE',numBg:'#CECBF6',numColor:'#3C3489',accentColor:'#534AB7',
@@ -1767,14 +2038,14 @@ const TABS = {
     site:'https://www.kpc.or.kr/index.do',siteName:'KPC 자격시험 바로가기',
   },
 };
-
+ 
 function renderMOS(d){
   const ac = d.accentColor;
   const monthsHtml = d.months.map(m=>{
     // 가장 가까운 날짜 찾기
     let nearDate = null, nearDiff = Infinity;
     m.rows.forEach(r=>{ const df=diffDays(r.examDate); if(df>=0&&df<nearDiff){nearDiff=df;nearDate=r.examDate;} });
-
+ 
     const trs = m.rows.map(r=>{
       const df = diffDays(r.examDate);
       const dd = getDdayInfo(df);
@@ -1790,7 +2061,7 @@ function renderMOS(d){
         <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)"><span class="c-dday ${dd.cls}">${dd.text}</span></td>
       </tr>`;
     }).join('');
-
+ 
     return `<div class="mos-month-title">${m.month} 시험 일정
       <span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px;background:${d.numBg};color:${d.numColor}">공개됨</span>
     </div>
@@ -1801,14 +2072,14 @@ function renderMOS(d){
       </table>
     </div>`;
   }).join('');
-
+ 
   const upcomingRows = d.upcomingMonths.map(m=>`
     <tr>
       <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)">${m} 일정</td>
       <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)">업데이트 예정</td>
       <td style="padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary)"><span class="c-dday dday-future">—</span></td>
     </tr>`).join('');
-
+ 
   return `
     <div class="info-bar"><i class="ti ti-info-circle" aria-hidden="true"></i>${d.info}</div>
     <div class="mos-box">
@@ -1833,7 +2104,7 @@ function renderMOS(d){
     <a class="site-btn" href="${d.site}" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>${d.siteName}</a>
   `;
 }
-
+ 
 function renderNormal(d){
   const sessions = d.sessions.map(s=>`
     <div class="session-row">
@@ -1852,7 +2123,7 @@ function renderNormal(d){
     <a class="site-btn" href="${d.site}" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>${d.siteName}</a>
   `;
 }
-
+ 
 function render(key){
   const d = TABS[key];
   document.getElementById('hdr').style.background = d.bgColor;
@@ -1869,20 +2140,15 @@ function render(key){
   });
   document.getElementById('body').innerHTML = d.type==='mos' ? renderMOS(d) : renderNormal(d);
 }
-
+ 
 document.getElementById('tabs').addEventListener('click',e=>{
   const btn=e.target.closest('.c-utab');
   if(!btn) return;
   render(btn.dataset.tab);
 });
-
+ 
 render('전산세무회계');
 </script>
-
-
-  </div>
-</div>
-
 <!-- ══════════════ COMPANY ══════════════ -->
 <div id="page-company" class="page-view">
   <div class="section" style="padding-top:2rem">
