@@ -2220,191 +2220,445 @@ render('전산세무회계');
       </div>
     </div>
 
-    <!-- 약도 SVG -->
-    <div class="map-wrap">
-      <div class="map-title-bar">
-        🗺️ 주차장 위치 약도
+   ```html
+<!-- ★ 주차 안내 -->
+<div id="page-parking" class="page-view">
+  <style>
+    #page-parking .parking-hero {
+      background: linear-gradient(135deg, #312e81 0%, #4f46e5 55%, #2563eb 100%);
+      border-radius: 28px;
+      padding: 2.4rem;
+      color: #fff;
+      box-shadow: 0 20px 45px rgba(49, 46, 129, 0.22);
+      margin-bottom: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #page-parking .parking-hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+    }
+
+    #page-parking .parking-hero-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #page-parking .parking-hero-title span {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: #fff;
+      color: #4338ca;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    #page-parking .parking-hero-desc {
+      font-size: 1.05rem;
+      opacity: 0.92;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    #page-parking .parking-map-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+      margin-bottom: 1.8rem;
+    }
+
+    #page-parking .parking-map-head {
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid #eef2ff;
+      background: #fafafa;
+    }
+
+    #page-parking .parking-map-head strong {
+      font-size: 1.05rem;
+      color: #111827;
+    }
+
+    #page-parking .parking-map-head span {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    #page-parking .parking-map-img {
+      width: 100%;
+      display: block;
+    }
+
+    #page-parking .parking-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    #page-parking .summary-card {
+      border-radius: 22px;
+      padding: 1.1rem;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    #page-parking .summary-card strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #111827;
+      margin-bottom: 0.35rem;
+    }
+
+    #page-parking .summary-card span {
+      font-size: 0.86rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    #page-parking .parking-grid-new {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    #page-parking .parking-fee-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 26px;
+      padding: 1.4rem;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #page-parking .parking-fee-card.recommend {
+      border-color: #16a34a;
+      background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 48%);
+    }
+
+    #page-parking .parking-fee-title {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+
+    #page-parking .parking-pin {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.18);
+      flex: 0 0 auto;
+    }
+
+    #page-parking .pin-a { background: #dc2626; }
+    #page-parking .pin-b { background: #2563eb; }
+    #page-parking .pin-c { background: #16a34a; }
+    #page-parking .pin-d { background: #4f46e5; }
+
+    #page-parking .parking-tag {
+      margin-left: auto;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.36rem 0.62rem;
+      border-radius: 999px;
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    #page-parking .fee-list {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    #page-parking .fee-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.78rem 0.85rem;
+      border-radius: 16px;
+      background: #f9fafb;
+      border: 1px solid #f1f5f9;
+    }
+
+    #page-parking .fee-label {
+      color: #6b7280;
+      font-size: 0.92rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    #page-parking .fee-value {
+      color: #111827;
+      font-size: 0.94rem;
+      font-weight: 800;
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    #page-parking .fee-value.green {
+      color: #15803d;
+    }
+
+    #page-parking .parking-note {
+      margin-top: 1.4rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    #page-parking .parking-notice-new {
+      margin-top: 1.8rem;
+      padding: 1.2rem 1.4rem;
+      border-radius: 22px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    #page-parking .parking-notice-new strong {
+      color: #111827;
+    }
+
+    @media (max-width: 900px) {
+      #page-parking .parking-summary,
+      #page-parking .parking-grid-new {
+        grid-template-columns: 1fr;
+      }
+
+      #page-parking .parking-map-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <div class="section" style="padding-top:2rem">
+
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Parking</p>
+        <h2 class="section-title">주차 안내</h2>
+        <p class="section-desc">SBS아카데미컴퓨터아트학원 안산점 주변 주차장 안내입니다.</p>
       </div>
-      <svg width="100%" viewBox="0 0 680 380" role="img" style="display:block;">
-        <title>SBS아카데미 안산점 주차장 위치 약도</title>
-        <desc>학원 본원과 A, B, C, D 주차장의 위치를 나타낸 약도입니다.</desc>
-
-        <!-- 배경 -->
-        <rect x="0" y="0" width="680" height="380" fill="#f0efe9"/>
-
-        <!-- 블록 건물들 (회색 배경 건물) -->
-        <rect x="30"  y="30"  width="100" height="70"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-        <rect x="150" y="30"  width="80"  height="55"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-        <rect x="250" y="30"  width="90"  height="55"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-        <rect x="360" y="30"  width="80"  height="40"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-        <rect x="460" y="30"  width="90"  height="60"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-        <rect x="570" y="30"  width="80"  height="55"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-
-        <rect x="30"  y="280" width="80"  height="70"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-        <rect x="570" y="270" width="90"  height="80"  rx="4" fill="#dddbd3" stroke="#c8c6be" stroke-width="0.5"/>
-
-        <!-- 중앙역 + 지하철 아이콘 배경 -->
-        <rect x="200" y="295" width="130" height="60" rx="6" fill="#1a56b0" opacity="0.12" stroke="#1a56b0" stroke-width="0.8"/>
-        <text x="265" y="321" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="11" font-weight="700" fill="#2a5c3f">중앙역 (4호선)</text>
-        <text x="265" y="337" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#2a5c3f" opacity="0.8">🚇 Jungang Station</text>
-
-        <!-- 도로 -->
-        <!-- 세로 메인도로 (중앙) -->
-        <rect x="350" y="0"   width="56" height="380" fill="#e8e6de" stroke="none"/>
-        <!-- 가로 메인도로 (상단) -->
-        <rect x="0"   y="108" width="680" height="48"  fill="#e8e6de" stroke="none"/>
-        <!-- 가로 메인도로 (하단 - 중앙로) -->
-        <rect x="0"   y="258" width="680" height="40"  fill="#e8e6de" stroke="none"/>
-        <!-- 도로 중앙선 -->
-        <line x1="378" y1="0"   x2="378" y2="108" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
-        <line x1="378" y1="156" x2="378" y2="258" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
-        <line x1="378" y1="298" x2="378" y2="380" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
-        <line x1="0"   y1="132" x2="350" y2="132" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
-        <line x1="406" y1="132" x2="680" y2="132" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
-        <line x1="0"   y1="278" x2="350" y2="278" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
-        <line x1="406" y1="278" x2="680" y2="278" stroke="#ccc9be" stroke-width="0.8" stroke-dasharray="8,6"/>
-
-        <!-- 도로 라벨 -->
-        <text x="183" y="126" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">중앙대로</text>
-        <text x="530" y="126" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">중앙대로</text>
-        <text x="183" y="272" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">고잔로</text>
-        <text x="530" y="272" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#9a9890" font-weight="500">고잔로</text>
-
-        <!-- ★ 학원 본원 (SBS) -->
-        <rect x="408" y="164" width="110" height="84" rx="6" fill="#fff7ed" stroke="#c8893a" stroke-width="1.5"/>
-        <rect x="408" y="164" width="110" height="22" rx="6" fill="#c8893a"/>
-        <rect x="408" y="178" width="110" height="8"  fill="#c8893a"/>
-        <text x="463" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff">SBS아카데미</text>
-        <text x="463" y="210" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#92521a">안산점 본원</text>
-        <text x="463" y="228" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#b8732a" opacity="0.8">929 중앙대로</text>
-        <text x="463" y="242" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#b8732a" opacity="0.8">3층</text>
-
-        <!-- ────────────────── 주차장 A ────────────────── -->
-        <!-- 본원 건물 주차 (본원 건물 하단부) -->
-        <rect x="408" y="164" width="110" height="84" rx="6" fill="none" stroke="#1a6fb5" stroke-width="0" />
-        <rect x="412" y="248" width="102" height="30" rx="4" fill="#dbeafe" stroke="#1a6fb5" stroke-width="1"/>
-        <text x="463" y="267" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#1a3a5c">🅿 본원 지하</text>
-        <!-- 배지 A -->
-        <rect x="412" y="164" width="22" height="22" rx="5" fill="#1a6fb5"/>
-        <text x="423" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">A</text>
-
-        <!-- ────────────────── 주차장 B ────────────────── -->
-        <!-- 공영유료 주차장 (우측 상단) -->
-        <rect x="530" y="164" width="120" height="70" rx="5" fill="#fef9ee" stroke="#c8893a" stroke-width="1"/>
-        <rect x="530" y="164" width="120" height="22" rx="5" fill="#c8893a" opacity="0.2"/>
-        <text x="590" y="179" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#8a5a10" font-weight="700">공영유료주차장</text>
-        <text x="590" y="198" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">30분 600원</text>
-        <text x="590" y="213" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#c8893a">⚠ 저녁 비추천</text>
-        <text x="590" y="226" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">일주차 9,000원</text>
-        <!-- 배지 B -->
-        <rect x="530" y="164" width="22" height="22" rx="5" fill="#c8893a"/>
-        <text x="541" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">B</text>
-        <!-- 연결선 A→B -->
-        <line x1="520" y1="200" x2="528" y2="200" stroke="#9a9890" stroke-width="0.8" stroke-dasharray="3,3"/>
-
-        <!-- ────────────────── 주차장 C ────────────────── -->
-        <!-- 동원빌딩 공영주차장 (좌측 상단) -->
-        <rect x="30" y="164" width="130" height="72" rx="5" fill="#f9fafb" stroke="#5a5850" stroke-width="1"/>
-        <rect x="30" y="164" width="130" height="22" rx="5" fill="#5a5850" opacity="0.15"/>
-        <text x="95" y="179" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#3a3830" font-weight="700">동원빌딩 공영주차장</text>
-        <text x="95" y="198" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">30분 1,000원</text>
-        <text x="95" y="213" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">일주차 9,000원</text>
-        <text x="95" y="228" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#9a9890">월주차 80,000원</text>
-        <!-- 배지 C -->
-        <rect x="30" y="164" width="22" height="22" rx="5" fill="#5a5850"/>
-        <text x="41" y="180" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">C</text>
-        <!-- 연결선 C→학원 -->
-        <line x1="160" y1="200" x2="348" y2="200" stroke="#9a9890" stroke-width="0.8" stroke-dasharray="4,3"/>
-        <polygon points="348,196 356,200 348,204" fill="#9a9890"/>
-
-        <!-- ────────────────── 주차장 D ────────────────── -->
-        <!-- 중앙역 주차장 (하단) -->
-        <rect x="342" y="298" width="120" height="66" rx="5" fill="#e8f2ec" stroke="#2a5c3f" stroke-width="1.5"/>
-        <rect x="342" y="298" width="120" height="22" rx="5" fill="#2a5c3f" opacity="0.2"/>
-        <text x="402" y="313" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="10" fill="#1a3c2a" font-weight="700">중앙역 주차장</text>
-        <text x="402" y="330" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#2a5c3f">⭐ 추천</text>
-        <text x="402" y="344" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#5a9070">일주차 9,000원</text>
-        <text x="402" y="357" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9"  fill="#5a9070">월주차 80,000원</text>
-        <!-- 배지 D -->
-        <rect x="342" y="298" width="22" height="22" rx="5" fill="#2a5c3f"/>
-        <text x="353" y="314" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#fff">D</text>
-        <!-- 연결선 D→학원 (수직) -->
-        <line x1="402" y1="296" x2="402" y2="260" stroke="#2a5c3f" stroke-width="0.8" stroke-dasharray="4,3"/>
-        <polygon points="398,260 402,252 406,260" fill="#2a5c3f"/>
-
-        <!-- 보행자 경로 강조 (학원→D) -->
-        <text x="430" y="288" font-family="Pretendard,-apple-system,sans-serif" font-size="9" fill="#2a5c3f" opacity="0.7">도보 약 3분</text>
-
-        <!-- 나침반 -->
-        <g transform="translate(634,340)">
-          <circle cx="0" cy="0" r="18" fill="#fff" stroke="#e2e0d8" stroke-width="1"/>
-          <text x="0" y="-5"  text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9" font-weight="700" fill="#dc2626">N</text>
-          <text x="0" y="12" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="8" fill="#9a9890">S</text>
-          <line x1="0" y1="-14" x2="0" y2="2"   stroke="#dc2626" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="0" y1="2"   x2="0" y2="14"  stroke="#9a9890" stroke-width="1"   stroke-linecap="round"/>
-        </g>
-
-        <!-- 축척 -->
-        <line x1="30" y1="365" x2="130" y2="365" stroke="#9a9890" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="30" y1="360" x2="30"  y2="370" stroke="#9a9890" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="130" y1="360" x2="130" y2="370" stroke="#9a9890" stroke-width="1.5" stroke-linecap="round"/>
-        <text x="80" y="377" text-anchor="middle" font-family="Pretendard,-apple-system,sans-serif" font-size="9" fill="#9a9890">약 300m</text>
-
-      </svg>
+      <button class="back-btn" onclick="showPage('home')">
+        <svg viewBox="0 0 16 16" fill="none">
+          <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        처음으로
+      </button>
     </div>
 
-    <!-- 주차장 카드 -->
-    <div class="parking-grid">
-      <div class="parking-card">
-        <div class="parking-card-title"><span class="parking-badge a">A</span>본원 건물 주차장</div>
-        <div class="parking-rows">
-          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 1,000원</span></div>
-          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">30분당 1,000원</span></div>
-          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value">20,000원</span></div>
-          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value">80,000원</span></div>
-        </div>
+    <div class="parking-hero">
+      <div class="parking-hero-title">
+        <span>🚘</span>
+        주차장 안내
+      </div>
+      <p class="parking-hero-desc">
+        방문 전 이용 가능한 주차장 위치와 요금을 확인해 주세요.<br>
+        장시간 이용 시에는 1일 최대 요금과 월 정기권 여부를 함께 비교하는 것을 추천드립니다.
+      </p>
+    </div>
+
+    <div class="parking-map-card">
+      <div class="parking-map-head">
+        <strong>주차장 위치 약도</strong>
+        <span>A 본원 건물 지하주차장 · B 공영유료주차장 · C 중앙역 주차장 · D 동원빌딩 앞 주차장</span>
       </div>
 
-      <div class="parking-card warn">
-        <div class="parking-card-title"><span class="parking-badge b">B</span>공영유료주차장</div>
-        <div class="parking-rows">
-          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 600원</span></div>
-          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">10분당 300원</span></div>
-          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value amber">9,000원 (저녁 비추천)</span></div>
-          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value">–</span></div>
-        </div>
+      <img src="./parking-map.png" alt="SBS아카데미컴퓨터아트학원 안산점 주차장 위치 약도" class="parking-map-img">
+    </div>
+
+    <div class="parking-summary">
+      <div class="summary-card">
+        <strong>A 본원 건물 지하주차장</strong>
+        <span>학원 건물 내 주차장입니다. 평일에는 모두의주차장 3시간권 이용 가능 여부를 확인해 주세요.</span>
       </div>
 
-      <div class="parking-card">
-        <div class="parking-card-title"><span class="parking-badge c">C</span>동원빌딩 공영주차장</div>
-        <div class="parking-rows">
-          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 1,000원</span></div>
-          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">10분당 500원</span></div>
-          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value">9,000원</span></div>
-          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value">80,000원</span></div>
-        </div>
+      <div class="summary-card">
+        <strong>B 공영유료주차장</strong>
+        <span>기본 30분 600원으로 이용 가능하며, 1일 최대 요금은 9,000원입니다.</span>
       </div>
 
-      <div class="parking-card recommend">
-        <div class="parking-card-title"><span class="parking-badge d">D</span>중앙역 주차장</div>
-        <div class="parking-rows">
-          <div class="parking-row"><span class="parking-label">기본 요금</span><span class="parking-value">30분 1,000원</span></div>
-          <div class="parking-row"><span class="parking-label">추가 요금</span><span class="parking-value">10분당 500원</span></div>
-          <div class="parking-row"><span class="parking-label">일주차</span><span class="parking-value">9,000원</span></div>
-          <div class="parking-row"><span class="parking-label">월주차</span><span class="parking-value green">80,000원 (추천)</span></div>
-        </div>
+      <div class="summary-card">
+        <strong>C 중앙역 주차장</strong>
+        <span>요금 부담이 적고 월 정기권이 있어 장기 수강생에게 추천됩니다.</span>
+      </div>
+
+      <div class="summary-card">
+        <strong>D 동원빌딩 앞 주차장</strong>
+        <span>기본 30분 600원이며, 3시간 기준 5,100원으로 이용 가능합니다.</span>
       </div>
     </div>
 
-    <div class="notice-box">
-      <strong>📌 주차 이용 안내</strong><br>
-      최초 1회 방문 시 무료, 2회 이후부터는 30분 무료로 이용하실 수 있습니다.<br>
-      자세한 주차 안내는 <strong>인포데스크</strong>에 문의해 주세요.<br>
-      월주차 이용 시 <strong>D 중앙역 주차장</strong>을 추천드립니다.
+    <div class="parking-grid-new">
+
+      <div class="parking-fee-card">
+        <div class="parking-fee-title">
+          <span class="parking-pin pin-a">A</span>
+          본원 건물 지하주차장
+        </div>
+
+        <div class="fee-list">
+          <div class="fee-row">
+            <span class="fee-label">기본</span>
+            <span class="fee-value">30분 1,000원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">추가</span>
+            <span class="fee-value">30분당 1,000원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">3시간 기준</span>
+            <span class="fee-value">6,000원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">1일 최대</span>
+            <span class="fee-value">20,000원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">할인권</span>
+            <span class="fee-value green">모두의주차장 평일만 이용 가능<br>3시간 3,000원권</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="parking-fee-card">
+        <div class="parking-fee-title">
+          <span class="parking-pin pin-b">B</span>
+          공영유료주차장
+        </div>
+
+        <div class="fee-list">
+          <div class="fee-row">
+            <span class="fee-label">기본</span>
+            <span class="fee-value">30분 600원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">추가</span>
+            <span class="fee-value">10분당 300원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">3시간 기준</span>
+            <span class="fee-value">5,100원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">1일 최대</span>
+            <span class="fee-value">9,000원</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="parking-fee-card recommend">
+        <div class="parking-fee-title">
+          <span class="parking-pin pin-c">C</span>
+          중앙역 주차장
+          <span class="parking-tag">추천</span>
+        </div>
+
+        <div class="fee-list">
+          <div class="fee-row">
+            <span class="fee-label">기본</span>
+            <span class="fee-value">30분 500원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">추가</span>
+            <span class="fee-value">10분당 200원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">3시간 기준</span>
+            <span class="fee-value">3,500원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">1일 최대</span>
+            <span class="fee-value">8,000원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">월 정기</span>
+            <span class="fee-value green">50,000원</span>
+          </div>
+        </div>
+
+        <div class="parking-note">
+          정기권의 경우 이미 할인된 금액이며 이중할인은 적용되지 않습니다.
+        </div>
+      </div>
+
+      <div class="parking-fee-card">
+        <div class="parking-fee-title">
+          <span class="parking-pin pin-d">D</span>
+          동원빌딩 앞 주차장
+        </div>
+
+        <div class="fee-list">
+          <div class="fee-row">
+            <span class="fee-label">기본</span>
+            <span class="fee-value">30분 600원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">추가</span>
+            <span class="fee-value">10분당 300원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">3시간 기준</span>
+            <span class="fee-value">5,100원</span>
+          </div>
+          <div class="fee-row">
+            <span class="fee-label">1일 최대</span>
+            <span class="fee-value">9,000원</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="parking-notice-new">
+      <strong>이용 안내</strong><br>
+      주차 요금은 현장 상황에 따라 변동될 수 있으니 방문 전 확인을 권장드립니다.<br>
+      장시간 주차 예정이라면 C 중앙역 주차장을 우선 확인해 주세요.<br>
+      모두의주차장 할인권은 A 본원 건물 지하주차장에서 평일에만 이용 가능합니다.
     </div>
 
   </div>
 </div>
+```
+
 
 <!-- ══════════════ PROGRAMS ══════════════ -->
 <div id="page-programs" class="page-view">
